@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bellevue Road, Oranjezicht — Alistair Drummond Architect</title>
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="nav-row">
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-items" id="navItems">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <a href="index.html" class="header-brand">Alistair Drummond Architect</a>
+  </header>
+  <main class="page">
+    <div class="project-title-wrap">
+      <h1 class="project-title">Bellevue Road, Oranjezicht</h1>
+    </div>
+    <section class="about-section">
+      <div class="about-label">About</div>
+      <div class="about-body">
+        <div>
+          <p>The complex forms part of a 3 storied 3 unit development in a strong Urban Conservation area. Gabled roofs were maintained to comply with the contemporary styling in the area. The upper levels use glass in order to capture the spectacular mountain views in both directions.</p>
+          <p>The overall design again was to scale the building down by defragmenting the different roofs as seen. This provides each unit with a sense of identity.</p>
+        </div>
+        <p>The project is rich in choice of materials. Although there is high use of steel &amp; glass in the upper levels, there is the use of natural stone &amp; tiles, cladded timber etc. mixed in a way to create a certain interest as seen in the combination of materials used.</p>
+      </div>
+    </section>
+    <section class="images-section">
+      <div class="images-label">Featured Images</div>
+      <div class="gallery">
+        <button class="gallery-arrow gallery-prev" aria-label="Previous">&#8249;</button>
+        <div class="gallery-pair">
+          <img class="gallery-img" id="img-a" src="" alt="" />
+          <img class="gallery-img" id="img-b" src="" alt="" />
+        </div>
+        <button class="gallery-arrow gallery-next" aria-label="Next">&#8250;</button>
+      </div>
+      <div class="gallery-counter" id="galleryCounter"></div>
+      <button class="gallery-close" id="galleryClose">&#215;</button>
+    </section>
+  </main>
+  <script>
+    const burger = document.getElementById('burger');
+    const navItems = document.getElementById('navItems');
+    burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
+    const slides = [
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue.jpg', 'images/bellevue/Alistair-Drummond-Architect_Bellevue5.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue2.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue3.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue4.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue6.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue7.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue8.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue9.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue10-1.jpg', 'images/bellevue/Alistair-Drummond-Architect_Bellevue11.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue12-1.jpg', 'images/bellevue/Alistair-Drummond-Architect_Bellevue13.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue14.jpg', 'images/bellevue/F1050005.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue50.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue70.jpg'],
+      ['images/bellevue/Alistair-Drummond-Architect_Bellevue80.jpg'],
+      ['images/bellevue/F1050009-scaled.jpg', 'images/bellevue/kloof Street.jpg'],
+    ];
+    const imgA = document.getElementById('img-a');
+    const imgB = document.getElementById('img-b');
+    const galleryPair = document.querySelector('.gallery-pair');
+    const counter = document.getElementById('galleryCounter');
+    let current = 0;
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      const slide = slides[current];
+      imgA.src = slide[0];
+      if (slide[1]) { imgB.src = slide[1]; imgB.style.display = 'block'; galleryPair.style.gridTemplateColumns = '1fr 1fr'; }
+      else { imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr'; }
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+    const section = document.querySelector('.images-section');
+    const closeBtn = document.getElementById('galleryClose');
+    function enterFocus() { section.classList.add('focused'); document.body.classList.add('gallery-focus'); }
+    function exitFocus() { section.classList.remove('focused'); document.body.classList.remove('gallery-focus'); }
+    document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocus(); });
+    document.querySelector('.gallery-next').addEventListener('click', () => { showSlide(current + 1); enterFocus(); });
+    closeBtn.addEventListener('click', exitFocus);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
+    showSlide(0);
+  </script>
+</body>
+</html>

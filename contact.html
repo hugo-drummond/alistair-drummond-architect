@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Alistair Drummond Architect</title>
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="header">
+    <div class="nav-row">
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-items" id="navItems">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+      </div>
+    </div>
+    <a href="index.html" class="header-brand">Alistair Drummond Architect</a>
+  </header>
+
+  <main class="page">
+
+    <!-- LEFT: FORM -->
+    <div class="form-side">
+      <h1 class="page-title">Contact</h1>
+
+      <form class="form" action="#" method="post">
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required />
+        </div>
+
+        <div class="field">
+          <label for="phone">Number</label>
+          <div class="phone-row">
+            <select id="phone-code" name="phone-code" aria-label="Country code">
+              <option value="+27" selected>🇿🇦 +27</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+31">🇳🇱 +31</option>
+              <option value="+264">🇳🇦 +264</option>
+              <option value="+263">🇿🇼 +263</option>
+              <option value="+267">🇧🇼 +267</option>
+            </select>
+            <input type="tel" id="phone" name="phone" placeholder="Phone number" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="field">
+          <label for="message">Tell us about your project</label>
+          <textarea id="message" name="message" rows="6" placeholder="Describe your project, timeline, or any questions…"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+
+      </form>
+
+      <div class="office-info">
+        <p>2b Van Reenen Street</p>
+        <p>Newlands, Cape Town</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: MAP -->
+    <div class="map-side">
+      <iframe
+        class="map"
+        src="https://maps.google.com/maps?q=2b+Van+Reenen+Street,+Newlands,+Cape+Town,+South+Africa&output=embed&z=15"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Office location">
+      </iframe>
+    </div>
+
+  </main>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const navItems = document.getElementById('navItems');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navItems.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simpson Tyler, Betty's Bay — Alistair Drummond Architect</title>
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="header">
+    <div class="nav-row">
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-items" id="navItems">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <a href="index.html" class="header-brand">Alistair Drummond Architect</a>
+  </header>
+
+  <main class="page">
+
+    <!-- TITLE -->
+    <div class="project-title-wrap">
+      <h1 class="project-title">Simpson Tyler, Betty's Bay</h1>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about-section">
+      <div class="about-label">About</div>
+      <div class="about-body">
+        <p>The original house was a victim of the recent fire in Betty's Bay. Although my clients were devastated, it gave them an opportunity to create something that would respond to the natural elements around them. Using the original foot print of the house, they ultimately sought to maximize the best view from all rooms as well as the best light into each room.</p>
+        <p>The gabled roof had to be maintained for title deed reasons, but having done so, does provide the house with a unique look as the 2 end roofs can be seen as book ends that hold the internal flying roofs.</p>
+        <p>There was great consideration in the use of natural materials which provide the house with a very warm feel with the large use of glass as seen in the fenestration.</p>
+      </div>
+    </section>
+
+    <!-- FEATURED IMAGES -->
+    <section class="images-section">
+      <div class="images-label">Featured Images</div>
+
+      <div class="gallery">
+        <button class="gallery-arrow gallery-prev" aria-label="Previous">&#8249;</button>
+
+        <div class="gallery-pair">
+          <img class="gallery-img" id="img-a" src="" alt="" />
+          <img class="gallery-img" id="img-b" src="" alt="" />
+        </div>
+
+        <button class="gallery-arrow gallery-next" aria-label="Next">&#8250;</button>
+      </div>
+
+      <div class="gallery-counter" id="galleryCounter"></div>
+      <button class="gallery-close" id="galleryClose">&#215;</button>
+    </section>
+
+  </main>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const navItems = document.getElementById('navItems');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navItems.classList.toggle('open');
+    });
+
+    // Each slide is an array of 1 or 2 image paths
+    const slides = [
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler.jpg',     'images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler1.jpg'],
+      // Slide 2 removed
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler5.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler7.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler8-1.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler9-1.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler10-1.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler11.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler12.jpg',   'images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler13.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler14.jpg',   'images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler_BettysBay1.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler_BettysBay3.jpg', 'images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler_BettysBay7.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler_BettysBay12.jpg','images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler_BettysBay13.jpg'],
+      ['images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler_BettysBay14.jpg','images/simpson-tyler/Alistair-Drummond-Architect_SimpsonTyler_BettysBay15.jpg'],
+    ];
+
+    const imgA = document.getElementById('img-a');
+    const imgB = document.getElementById('img-b');
+    const galleryPair = document.querySelector('.gallery-pair');
+    const counter = document.getElementById('galleryCounter');
+    let current = 0;
+
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      const slide = slides[current];
+      imgA.src = slide[0];
+      if (slide[1]) {
+        imgB.src = slide[1];
+        imgB.style.display = 'block';
+        galleryPair.style.gridTemplateColumns = '1fr 1fr';
+      } else {
+        imgB.src = '';
+        imgB.style.display = 'none';
+        galleryPair.style.gridTemplateColumns = '1fr';
+      }
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+
+    const section = document.querySelector('.images-section');
+    const closeBtn = document.getElementById('galleryClose');
+
+    function enterFocus() {
+      section.classList.add('focused');
+      document.body.classList.add('gallery-focus');
+    }
+
+    function exitFocus() {
+      section.classList.remove('focused');
+      document.body.classList.remove('gallery-focus');
+    }
+
+    document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocus(); });
+    document.querySelector('.gallery-next').addEventListener('click', () => { showSlide(current + 1); enterFocus(); });
+    closeBtn.addEventListener('click', exitFocus);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') exitFocus();
+    });
+
+    showSlide(0);
+  </script>
+</body>
+</html>

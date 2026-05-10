@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fernwood, Newlands — Alistair Drummond Architect</title>
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="nav-row">
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-items" id="navItems">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <a href="index.html" class="header-brand">Alistair Drummond Architect</a>
+  </header>
+  <main class="page">
+    <div class="project-title-wrap">
+      <h1 class="project-title">Fernwood, Newlands</h1>
+    </div>
+    <section class="images-section">
+      <div class="images-label">Featured Images</div>
+      <div class="gallery">
+        <button class="gallery-arrow gallery-prev" aria-label="Previous">&#8249;</button>
+        <div class="gallery-pair">
+          <img class="gallery-img" id="img-a" src="" alt="" />
+          <img class="gallery-img" id="img-b" src="" alt="" />
+        </div>
+        <button class="gallery-arrow gallery-next" aria-label="Next">&#8250;</button>
+      </div>
+      <div class="gallery-counter" id="galleryCounter"></div>
+      <button class="gallery-close" id="galleryClose">&#215;</button>
+    </section>
+  </main>
+  <script>
+    const burger = document.getElementById('burger');
+    const navItems = document.getElementById('navItems');
+    burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
+    const slides = [
+      ['images/fernwood/1.-CORNER-STREET-1_AJ-Edit-scaled.jpg', 'images/fernwood/2.-EAST-DETAIL-2_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/3.-EAST-ELEVATION-2_AJ-Edit-scaled.jpg', 'images/fernwood/4.-EAST-ELEVATION_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/5.-ENTRANCE-COURTYARD_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/6.-EX-SHOT-3_AJ-Edit-scaled.jpg', 'images/fernwood/8.-EX-SHOT-11_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/9.-FRONT-DOOR-1_AJ-Edit-scaled.jpg', 'images/fernwood/10.-FRONT-DOOR-2_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/11.-FRONT-STAIR-1_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/12.-INT-1-DINING_AJ-Edit-scaled.jpg', 'images/fernwood/13.-INT-2-LIVING_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/14.-INT-3-LIVING-DINING_AJ-Edit-scaled.jpg', 'images/fernwood/15.-INT-4-DINING_AJ-Edit-1-scaled.jpg'],
+      ['images/fernwood/16.-INT-6-DINING_AJ-Edit-scaled.jpg', 'images/fernwood/17.-INT-7-KITCHEN_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/18.-INT-11_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/19.-LOBBY-1_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/20.-NIGHT-CORNER-SUNROOM_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/21.-NIGHT-EX-SHOT-10_AJ-Edit-scaled.jpg', 'images/fernwood/22.-NIGHT-WEST-3_AJ-Edit-scaled.jpg'],
+      ['images/fernwood/Fernwood.jpg']
+    ];
+    const imgA = document.getElementById('img-a');
+    const imgB = document.getElementById('img-b');
+    const galleryPair = document.querySelector('.gallery-pair');
+    const counter = document.getElementById('galleryCounter');
+    let current = 0;
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      const slide = slides[current];
+      imgA.src = slide[0];
+      if (slide[1]) { imgB.src = slide[1]; imgB.style.display = 'block'; galleryPair.style.gridTemplateColumns = '1fr 1fr'; }
+      else { imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr'; }
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+    const section = document.querySelector('.images-section');
+    const closeBtn = document.getElementById('galleryClose');
+    function enterFocus() { section.classList.add('focused'); document.body.classList.add('gallery-focus'); }
+    function exitFocus() { section.classList.remove('focused'); document.body.classList.remove('gallery-focus'); }
+    document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocus(); });
+    document.querySelector('.gallery-next').addEventListener('click', () => { showSlide(current + 1); enterFocus(); });
+    closeBtn.addEventListener('click', exitFocus);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
+    showSlide(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netherby &amp; Hill, Betty's Bay — Alistair Drummond Architect</title>
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="nav-row">
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-items" id="navItems">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <a href="index.html" class="header-brand">Alistair Drummond Architect</a>
+  </header>
+  <main class="page">
+    <div class="project-title-wrap">
+      <h1 class="project-title">Netherby &amp; Hill, Betty's Bay</h1>
+    </div>
+    <section class="about-section">
+      <div class="about-label">About</div>
+      <div class="about-body">
+        <div>
+          <p>Story of the 4 sisters. Approximately 50 years ago there were 4 sisters who drew straws for the 3 houses on top of the hill overlooking the main beach in Bettys Bay. The 4th straw was for a hill top plot &amp; a house removed from the hill. My client drew the 4th straw. After selling their own Cape Town house, they were able to build on the plot.</p>
+          <p>The project had a limited budget which partly influenced the style of the roofs. The 2 gables are bridged by a central roof that accommodates an upper Loft area which scales the house under the required accommodation. It was of utmost importance that the view be achieved both towards the ocean and the mountain. Hence the main part of the house is a glass box, but with a covered outside area on the lake side.</p>
+        </div>
+        <p>The second house, Hill House, next door to Netherby that I worked on was also extended adding a wing which captured the spectacular views &amp; light, but most importantly kept the style of the existing house, modernizing the extension with the use of the glass boxed ends on either side.</p>
+      </div>
+    </section>
+    <section class="images-section">
+      <div class="images-label">Featured Images</div>
+      <div class="gallery">
+        <button class="gallery-arrow gallery-prev" aria-label="Previous">&#8249;</button>
+        <div class="gallery-pair">
+          <img class="gallery-img" id="img-a" src="" alt="" />
+          <img class="gallery-img" id="img-b" src="" alt="" />
+        </div>
+        <button class="gallery-arrow gallery-next" aria-label="Next">&#8250;</button>
+      </div>
+      <div class="gallery-counter" id="galleryCounter"></div>
+      <button class="gallery-close" id="galleryClose">&#215;</button>
+    </section>
+  </main>
+  <script>
+    const burger = document.getElementById('burger');
+    const navItems = document.getElementById('navItems');
+    burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
+    const slides = [
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill1.jpg', 'images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill2.jpg'],
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill3.jpg', 'images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill4.jpg'],
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill5.jpg'],
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill6.jpg'],
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill7.jpg'],
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill8.jpg', 'images/hills-bettys-bay/Alistair-Drummond-Architect_WoodHillCombo5.jpg'],
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_NetherbyHill9-1.jpg'],
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_WoodHillCombo6.jpg', 'images/hills-bettys-bay/Alistair-Drummond-Architect_WoodHillCombo7.jpg'],
+      ['images/hills-bettys-bay/Alistair-Drummond-Architect_WoodHillCombo8.jpg', 'images/hills-bettys-bay/Alistair-Drummond-Architect_WoodHillCombo9.jpg'],
+      ['images/hills-bettys-bay/bettys bay - wood.jpg']
+    ];
+    const imgA = document.getElementById('img-a');
+    const imgB = document.getElementById('img-b');
+    const galleryPair = document.querySelector('.gallery-pair');
+    const counter = document.getElementById('galleryCounter');
+    let current = 0;
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      const slide = slides[current];
+      imgA.src = slide[0];
+      if (slide[1]) { imgB.src = slide[1]; imgB.style.display = 'block'; galleryPair.style.gridTemplateColumns = '1fr 1fr'; }
+      else { imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr'; }
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+    const section = document.querySelector('.images-section');
+    const closeBtn = document.getElementById('galleryClose');
+    function enterFocus() { section.classList.add('focused'); document.body.classList.add('gallery-focus'); }
+    function exitFocus() { section.classList.remove('focused'); document.body.classList.remove('gallery-focus'); }
+    document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocus(); });
+    document.querySelector('.gallery-next').addEventListener('click', () => { showSlide(current + 1); enterFocus(); });
+    closeBtn.addEventListener('click', exitFocus);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
+    showSlide(0);
+  </script>
+</body>
+</html>

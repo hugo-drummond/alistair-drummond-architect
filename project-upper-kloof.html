@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upper Kloof Street — Alistair Drummond Architect</title>
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="nav-row">
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-items" id="navItems">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <a href="index.html" class="header-brand">Alistair Drummond Architect</a>
+  </header>
+  <main class="page">
+    <div class="project-title-wrap">
+      <h1 class="project-title">Upper Kloof Street</h1>
+    </div>
+    <section class="images-section">
+      <div class="images-label">Featured Images</div>
+      <div class="gallery">
+        <button class="gallery-arrow gallery-prev" aria-label="Previous">&#8249;</button>
+        <div class="gallery-pair">
+          <img class="gallery-img" id="img-a" src="" alt="" />
+          <img class="gallery-img" id="img-b" src="" alt="" />
+        </div>
+        <button class="gallery-arrow gallery-next" aria-label="Next">&#8250;</button>
+      </div>
+      <div class="gallery-counter" id="galleryCounter"></div>
+      <button class="gallery-close" id="galleryClose">&#215;</button>
+    </section>
+  </main>
+  <script>
+    const burger = document.getElementById('burger');
+    const navItems = document.getElementById('navItems');
+    burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
+
+    const slides = [
+      // Composite — solo
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKoof3.jpg'],
+      // Exterior singles paired
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKoof4.jpg', 'images/upper-kloof/20120311_DrummondHouse_4976-scaled.jpg'],
+      // Composite — solo (before/after exterior)
+      ['images/upper-kloof/Alistair-Drummond-Architect_28bUpperKloofStreet12.jpg'],
+      // Exterior/approach singles
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKoof6.jpg', 'images/upper-kloof/Alistair-Drummond-Architect_UpperKoof7.jpg'],
+      // Composite — solo (side-by-side courtyard + pool)
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKloof8.jpg'],
+      // Composite — solo (top/bottom exterior)
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKloof9.jpg'],
+      // Interior living/stair singles
+      ['images/upper-kloof/Alistair-Drummond-Architect_28bUpperKloofStreet3.jpg', 'images/upper-kloof/Alistair-Drummond-Architect_UpperKloof10.jpg'],
+      // Composite — solo (staircase side-by-side)
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKoof5.jpg'],
+      // Stair detail + kitchen paired
+      ['images/upper-kloof/Alistair-Drummond-Architect_28bUpperKloofStreet9.jpg', 'images/upper-kloof/Alistair-Drummond-Architect_28bUpperKloofStreet2.jpg'],
+      // Bedroom singles paired
+      ['images/upper-kloof/Alistair-Drummond-Architect_28bUpperKloofStreet4.jpg', 'images/upper-kloof/Alistair-Drummond-Architect_UpperKloof11.jpg'],
+      // Bathroom singles paired
+      ['images/upper-kloof/Alistair-Drummond-Architect_28bUpperKloofStreet5.jpg', 'images/upper-kloof/Alistair-Drummond-Architect_UpperKloof15.jpg'],
+      // Library/shelving + bedroom with joinery
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKloof12.jpg', 'images/upper-kloof/Alistair-Drummond-Architect_UpperKloof13.jpg'],
+      // Concrete feature wall + overhead view
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKloof16.jpg', 'images/upper-kloof/Alistair-Drummond-Architect_UpperKoof7.jpg'],
+      // Remaining singles paired
+      ['images/upper-kloof/Alistair-Drummond-Architect_UpperKloof14.jpg', 'images/upper-kloof/Alistair-Drummond-Architect_28bUpperKloofStreet10.jpg'],
+    ];
+
+    const imgA = document.getElementById('img-a');
+    const imgB = document.getElementById('img-b');
+    const galleryPair = document.querySelector('.gallery-pair');
+    const counter = document.getElementById('galleryCounter');
+    let current = 0;
+
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      const slide = slides[current];
+      imgA.src = slide[0];
+      if (slide[1]) {
+        imgB.src = slide[1];
+        imgB.style.display = 'block';
+        galleryPair.style.gridTemplateColumns = '1fr 1fr';
+      } else {
+        imgB.src = '';
+        imgB.style.display = 'none';
+        galleryPair.style.gridTemplateColumns = '1fr';
+      }
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+
+    const section = document.querySelector('.images-section');
+    const closeBtn = document.getElementById('galleryClose');
+
+    function enterFocus() { section.classList.add('focused'); document.body.classList.add('gallery-focus'); }
+    function exitFocus() { section.classList.remove('focused'); document.body.classList.remove('gallery-focus'); }
+
+    document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocus(); });
+    document.querySelector('.gallery-next').addEventListener('click', () => { showSlide(current + 1); enterFocus(); });
+    closeBtn.addEventListener('click', exitFocus);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
+
+    showSlide(0);
+  </script>
+</body>
+</html>
