@@ -65,7 +65,7 @@ html, body {
   white-space: nowrap;
 }
 
-.nav-items.open { max-width: 320px; opacity: 1; }
+.nav-items.open { max-width: 500px; opacity: 1; }
 
 .nav-items a {
   font-size: 13px;
