@@ -233,6 +233,10 @@ body.gallery-focus {
   margin-top: 16px;
 }
 
+.images-section.focused.portrait-slide {
+  padding-top: 120px;
+}
+
 .images-section.focused .gallery {
   flex: 1;
   width: 100%;

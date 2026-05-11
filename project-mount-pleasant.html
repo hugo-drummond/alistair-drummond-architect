@@ -102,8 +102,8 @@
       document.body.classList.remove('gallery-focus');
     }
 
-    document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocus(); });
-    document.querySelector('.gallery-next').addEventListener('click', () => { showSlide(current + 1); enterFocus(); });
+    document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocusAfterOrient(); });
+    document.querySelector('.gallery-next').addEventListener('click', () => { showSlide(current + 1); enterFocusAfterOrient(); });
     closeBtn.addEventListener('click', exitFocus);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
 
