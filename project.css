@@ -235,6 +235,7 @@ body.gallery-focus {
 
 .images-section.focused.portrait-slide {
   padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .images-section.focused .gallery {
