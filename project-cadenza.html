@@ -6,12 +6,24 @@
   <title>Cadenza, Fernwood — Alistair Drummond Architect</title>
   <link rel="stylesheet" href="project.css" />
   <style>
+    /* Paired portrait slides */
     .images-section.focused.portrait-slide:not(.solo) .gallery-pair {
       grid-template-columns: auto auto !important;
       justify-content: center;
       gap: 20px;
     }
     .images-section.focused.portrait-slide:not(.solo) .gallery-img {
+      width: auto !important;
+      height: calc(100vh - 120px) !important;
+      max-height: calc(100vh - 120px) !important;
+      object-fit: contain !important;
+    }
+    /* Solo portrait slides */
+    .images-section.focused.portrait-slide.solo .gallery {
+      display: flex;
+      justify-content: center;
+    }
+    .images-section.focused.portrait-slide.solo .gallery-img {
       width: auto !important;
       height: calc(100vh - 120px) !important;
       max-height: calc(100vh - 120px) !important;
@@ -65,9 +77,9 @@
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord13-7.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord14.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood2.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood4.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood4.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood9.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood6.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood8.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood9.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood10.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood10.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood11.jpg', 'images/cadenza/Newlands.jpg']
     ];
     const imgA = document.getElementById('img-a');
