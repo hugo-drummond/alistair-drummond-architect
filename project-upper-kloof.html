@@ -93,7 +93,12 @@
     const section = document.querySelector('.images-section');
     const closeBtn = document.getElementById('galleryClose');
 
-    function applyOrientation() { if (imgA.complete && imgA.naturalWidth > 0) { section.classList.toggle("portrait-slide", imgA.naturalHeight > imgA.naturalWidth); } else { imgA.onload = () => section.classList.toggle("portrait-slide", imgA.naturalHeight > imgA.naturalWidth); } } function enterFocusAfterOrient() { if (imgA.complete && imgA.naturalWidth > 0) { applyOrientation(); section.classList.add("focused"); document.body.classList.add("gallery-focus"); } else { imgA.onload = () => { applyOrientation(); section.classList.add("focused"); document.body.classList.add("gallery-focus"); }; } }
+    function applyOrientation() { if (imgA.complete && imgA.naturalWidth > 0) { section.classList.toggle("portrait-slide", imgA.naturalHeight > imgA.naturalWidth); } else { imgA.onload = () => section.classList.toggle("portrait-slide", imgA.naturalHeight > imgA.naturalWidth); } } function enterFocusAfterOrient() {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const doFocus = () => { applyOrientation(); section.classList.add("focused"); document.body.classList.add("gallery-focus"); };
+      if (imgA.complete && imgA.naturalWidth > 0) { setTimeout(doFocus, 250); }
+      else { imgA.onload = () => setTimeout(doFocus, 250); }
+    }
     function exitFocus() { section.classList.remove('focused'); document.body.classList.remove('gallery-focus'); }
 
     document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocusAfterOrient(); });

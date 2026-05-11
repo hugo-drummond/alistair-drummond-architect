@@ -124,17 +124,10 @@
     }
 
     function enterFocusAfterOrient() {
-      if (imgA.complete && imgA.naturalWidth > 0) {
-        applyOrientation();
-        section.classList.add('focused');
-        document.body.classList.add('gallery-focus');
-      } else {
-        imgA.onload = () => {
-          applyOrientation();
-          section.classList.add('focused');
-          document.body.classList.add('gallery-focus');
-        };
-      }
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const doFocus = () => { applyOrientation(); section.classList.add('focused'); document.body.classList.add('gallery-focus'); };
+      if (imgA.complete && imgA.naturalWidth > 0) { setTimeout(doFocus, 250); }
+      else { imgA.onload = () => setTimeout(doFocus, 250); }
     }
 
     function exitFocus() {
