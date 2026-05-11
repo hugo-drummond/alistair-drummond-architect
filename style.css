@@ -67,8 +67,8 @@ html, body {
 
 .burger span {
   display: block;
-  width: 22px;
-  height: 1.5px;
+  width: 33px;
+  height: 2px;
   background: rgba(255,255,255,0.85);
 }
 
@@ -108,7 +108,7 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 19px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.75);

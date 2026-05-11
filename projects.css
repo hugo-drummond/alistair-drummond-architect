@@ -49,8 +49,8 @@ html, body {
 
 .burger span {
   display: block;
-  width: 22px;
-  height: 1.5px;
+  width: 33px;
+  height: 2px;
   background: #111;
 }
 
@@ -65,10 +65,10 @@ html, body {
   white-space: nowrap;
 }
 
-.nav-items.open { max-width: 260px; opacity: 1; }
+.nav-items.open { max-width: 400px; opacity: 1; }
 
 .nav-items a {
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #111;
