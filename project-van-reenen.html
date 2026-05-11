@@ -74,8 +74,10 @@
       current = (index + slides.length) % slides.length;
       const slide = slides[current];
       imgA.src = slide[0];
-      if (slide[1]) { imgB.src = slide[1]; imgB.style.display = 'block'; galleryPair.style.gridTemplateColumns = '1fr 1fr'; }
-      else { imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr'; }
+      if (slide[1]) { imgB.src = slide[1]; imgB.style.display = 'block'; galleryPair.style.gridTemplateColumns = '1fr 1fr';
+        section.classList.remove('solo'); }
+      else { imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr';
+        section.classList.add('solo'); }
       counter.textContent = (current + 1) + ' / ' + slides.length;
     }
     const section = document.querySelector('.images-section');

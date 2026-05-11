@@ -100,10 +100,12 @@
         imgB.src = slide[1];
         imgB.style.display = 'block';
         galleryPair.style.gridTemplateColumns = '1fr 1fr';
+        section.classList.remove('solo');
       } else {
         imgB.src = '';
         imgB.style.display = 'none';
         galleryPair.style.gridTemplateColumns = '1fr';
+        section.classList.add('solo');
       }
       counter.textContent = (current + 1) + ' / ' + slides.length;
     }

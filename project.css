@@ -215,9 +215,13 @@ body.gallery-focus {
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  padding: 60px 160px;
+  padding: 60px 20px;
   margin: 0;
   box-sizing: border-box;
+}
+
+.images-section.focused.solo {
+  padding: 60px 160px;
 }
 
 .images-section.focused .images-label {
