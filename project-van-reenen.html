@@ -79,6 +79,7 @@
       else { imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr';
         section.classList.add('solo'); }
       counter.textContent = (current + 1) + ' / ' + slides.length;
+      if (section.classList.contains('focused')) applyOrientation();
     }
     const section = document.querySelector('.images-section');
     const closeBtn = document.getElementById('galleryClose');
