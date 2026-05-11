@@ -241,13 +241,19 @@ body.gallery-focus {
   width: 100%;
 }
 
+/* Paired slides: consistent landscape height for both images */
 .images-section.focused .gallery-img {
   width: 100%;
-  height: auto !important;
-  max-height: calc(100vh - 120px) !important;
+  height: min(50vh, calc(50vw - 50px));
   aspect-ratio: auto !important;
   object-fit: cover;
   display: block;
+}
+
+/* Solo slides: natural height, capped to avoid overflow */
+.images-section.focused.solo .gallery-img {
+  height: auto !important;
+  max-height: calc(100vh - 120px) !important;
 }
 
 
