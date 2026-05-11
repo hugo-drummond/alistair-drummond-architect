@@ -158,7 +158,8 @@ html, body {
 
 .gallery-img {
   width: 100%;
-  aspect-ratio: 4/3;
+  height: min(50vh, calc(50vw - 50px));
+  aspect-ratio: auto;
   object-fit: cover;
   display: block;
 }
