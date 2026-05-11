@@ -56,6 +56,7 @@
         <div class="gallery-pair">
           <img class="gallery-img" id="img-a" src="" alt="" />
           <img class="gallery-img" id="img-b" src="" alt="" />
+          <img class="gallery-img" id="img-c" src="" alt="" />
         </div>
         <button class="gallery-arrow gallery-next" aria-label="Next">&#8250;</button>
       </div>
@@ -68,7 +69,7 @@
     const navItems = document.getElementById('navItems');
     burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
     const slides = [
-      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord4.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord5.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood10.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord5.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord2.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord3.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord7.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord8.jpg'],
@@ -76,14 +77,13 @@
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord11.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord12.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord13-7.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord14.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood2.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood4.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood9.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood2.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood4.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood9.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood6.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood8.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood10.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood11.jpg', 'images/cadenza/Newlands.jpg']
     ];
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');
+    const imgC = document.getElementById('img-c');
     const galleryPair = document.querySelector('.gallery-pair');
     const counter = document.getElementById('galleryCounter');
     let current = 0;
@@ -91,10 +91,22 @@
       current = (index + slides.length) % slides.length;
       const slide = slides[current];
       imgA.src = slide[0];
-      if (slide[1]) { imgB.src = slide[1]; imgB.style.display = 'block'; galleryPair.style.gridTemplateColumns = '1fr 1fr';
-        section.classList.remove('solo'); }
-      else { imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr';
-        section.classList.add('solo'); }
+      if (slide[2]) {
+        imgB.src = slide[1]; imgB.style.display = 'block';
+        imgC.src = slide[2]; imgC.style.display = 'block';
+        galleryPair.style.gridTemplateColumns = '1fr 1fr 1fr';
+        section.classList.remove('solo');
+      } else if (slide[1]) {
+        imgB.src = slide[1]; imgB.style.display = 'block';
+        imgC.src = ''; imgC.style.display = 'none';
+        galleryPair.style.gridTemplateColumns = '1fr 1fr';
+        section.classList.remove('solo');
+      } else {
+        imgB.src = ''; imgB.style.display = 'none';
+        imgC.src = ''; imgC.style.display = 'none';
+        galleryPair.style.gridTemplateColumns = '1fr';
+        section.classList.add('solo');
+      }
       counter.textContent = (current + 1) + ' / ' + slides.length;
       if (section.classList.contains('focused')) applyOrientation();
     }
