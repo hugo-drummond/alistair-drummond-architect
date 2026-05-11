@@ -224,7 +224,7 @@ body.gallery-focus {
   padding: 60px 20px;
   margin: 0;
   box-sizing: border-box;
-  animation: focusExpand 0.4s ease;
+  animation: focusExpand 0.6s ease;
 }
 
 

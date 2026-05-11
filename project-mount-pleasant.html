@@ -103,10 +103,20 @@
     }
 
     function enterFocusAfterOrient() {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const scrollDuration = 3000;
+      const scrollStart = window.pageYOffset;
+      const scrollTarget = section.getBoundingClientRect().top + scrollStart;
+      const scrollBegin = performance.now();
+      (function animateScroll(now) {
+        const elapsed = now - scrollBegin;
+        const p = Math.min(elapsed / scrollDuration, 1);
+        const ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
+        window.scrollTo(0, scrollStart + (scrollTarget - scrollStart) * ease);
+        if (p < 1) requestAnimationFrame(animateScroll);
+      })(performance.now());
       const doFocus = () => { applyOrientation(); section.classList.add('focused'); document.body.classList.add('gallery-focus'); };
-      if (imgA.complete && imgA.naturalWidth > 0) { setTimeout(doFocus, 250); }
-      else { imgA.onload = () => setTimeout(doFocus, 250); }
+      if (imgA.complete && imgA.naturalWidth > 0) { setTimeout(doFocus, 2800); }
+      else { imgA.onload = () => setTimeout(doFocus, 2800); }
     }
     function exitFocus() {
       section.classList.remove('focused');
