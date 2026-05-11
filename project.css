@@ -271,3 +271,7 @@ body.gallery-focus {
   .project-title { font-size: 26px; }
   .images-grid { grid-template-columns: 1fr; }
 }
+
+.header:has(.burger.open) .header-brand {
+  display: none;
+}

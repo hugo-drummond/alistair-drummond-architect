@@ -114,3 +114,7 @@ html, body {
   color: rgba(255,255,255,0.75);
   pointer-events: none;
 }
+
+.header:has(.burger.open) .header-brand {
+  display: none;
+}

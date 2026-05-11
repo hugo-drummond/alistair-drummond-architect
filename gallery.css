@@ -113,3 +113,7 @@ hr {
   .photo-row img { height: 140px; }
   .section-title { font-size: 22px; }
 }
+
+.header:has(.burger.open) .header-brand {
+  display: none;
+}

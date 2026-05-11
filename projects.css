@@ -162,3 +162,7 @@ html, body {
   .grid { grid-template-columns: 1fr; padding: 24px 16px; gap: 12px; }
   .header-brand { font-size: 11px; }
 }
+
+.header:has(.burger.open) .header-brand {
+  display: none;
+}
