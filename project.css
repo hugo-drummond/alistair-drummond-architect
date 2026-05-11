@@ -220,9 +220,6 @@ body.gallery-focus {
   box-sizing: border-box;
 }
 
-.images-section.focused.solo {
-  padding: 60px 160px;
-}
 
 .images-section.focused .images-label {
   display: none;
