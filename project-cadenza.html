@@ -7,12 +7,24 @@
   <link rel="stylesheet" href="project.css" />
   <style>
     /* Paired portrait slides */
-    .images-section.focused.portrait-slide:not(.solo) .gallery-pair {
+    .images-section.focused.portrait-slide:not(.solo):not(.triple) .gallery-pair {
       grid-template-columns: auto auto !important;
       justify-content: center;
       gap: 20px;
     }
-    .images-section.focused.portrait-slide:not(.solo) .gallery-img {
+    .images-section.focused.portrait-slide:not(.solo):not(.triple) .gallery-img {
+      width: auto !important;
+      height: calc(100vh - 120px) !important;
+      max-height: calc(100vh - 120px) !important;
+      object-fit: contain !important;
+    }
+    /* Triple portrait slides */
+    .images-section.focused.portrait-slide.triple .gallery-pair {
+      grid-template-columns: auto auto auto !important;
+      justify-content: center;
+      gap: 12px;
+    }
+    .images-section.focused.portrait-slide.triple .gallery-img {
       width: auto !important;
       height: calc(100vh - 120px) !important;
       max-height: calc(100vh - 120px) !important;
@@ -95,17 +107,17 @@
         imgB.src = slide[1]; imgB.style.display = 'block';
         imgC.src = slide[2]; imgC.style.display = 'block';
         galleryPair.style.gridTemplateColumns = '1fr 1fr 1fr';
-        section.classList.remove('solo');
+        section.classList.remove('solo'); section.classList.add('triple');
       } else if (slide[1]) {
         imgB.src = slide[1]; imgB.style.display = 'block';
         imgC.src = ''; imgC.style.display = 'none';
         galleryPair.style.gridTemplateColumns = '1fr 1fr';
-        section.classList.remove('solo');
+        section.classList.remove('solo'); section.classList.remove('triple');
       } else {
         imgB.src = ''; imgB.style.display = 'none';
         imgC.src = ''; imgC.style.display = 'none';
         galleryPair.style.gridTemplateColumns = '1fr';
-        section.classList.add('solo');
+        section.classList.add('solo'); section.classList.remove('triple');
       }
       counter.textContent = (current + 1) + ' / ' + slides.length;
       if (section.classList.contains('focused')) applyOrientation();
