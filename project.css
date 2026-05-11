@@ -233,9 +233,8 @@ body.gallery-focus {
   margin-top: 16px;
 }
 
-.images-section.focused.portrait-slide {
-  padding-top: 120px;
-  padding-bottom: 120px;
+.images-section.focused.portrait-slide .gallery-img {
+  height: calc(100vh - 240px) !important;
 }
 
 .images-section.focused .gallery {
