@@ -1,0 +1,28 @@
+# Alistair Drummond Architect
+
+> Cape Town-based architect specialising in residential architecture, heritage renovation, and contemporary new builds across the Western Cape, South Africa.
+
+## Practice
+
+Alistair Drummond Architect is a Cape Town architecture practice based at 2b Van Reenen Street, Newlands. The practice focuses on residential architecture — new builds, extensions, renovations, and heritage work — across Cape Town and the Western Cape.
+
+## Pages
+
+- [Home](https://alistair-drummond-architect.vercel.app/): Practice overview
+- [Projects](https://alistair-drummond-architect.vercel.app/projects.html): Selected residential projects
+- [Gallery](https://alistair-drummond-architect.vercel.app/gallery.html): Architectural photography
+- [Contact](https://alistair-drummond-architect.vercel.app/contact.html): Office address and enquiry form
+
+## Selected Projects
+
+- [Fernwood, Newlands](https://alistair-drummond-architect.vercel.app/project-fernwood.html)
+- [Simpson Tyler, Betty's Bay](https://alistair-drummond-architect.vercel.app/project-simpson-tyler.html)
+- [Augustin, Tamboerskloof](https://alistair-drummond-architect.vercel.app/project-augustin.html)
+- [Van Lienden, Constantia](https://alistair-drummond-architect.vercel.app/project-van-lienden.html)
+- [Cadenza, Fernwood](https://alistair-drummond-architect.vercel.app/project-cadenza.html)
+- [The Drive, Camps Bay](https://alistair-drummond-architect.vercel.app/project-camps-bay.html)
+- [Upper Kloof Street](https://alistair-drummond-architect.vercel.app/project-upper-kloof.html)
+- [Netherby & Hill, Betty's Bay](https://alistair-drummond-architect.vercel.app/project-hills-bettys-bay.html)
+- [Bellevue Road, Oranjezicht](https://alistair-drummond-architect.vercel.app/project-bellevue.html)
+- [Van Reenen Street, Newlands](https://alistair-drummond-architect.vercel.app/project-van-reenen.html)
+- [Mount Pleasant](https://alistair-drummond-architect.vercel.app/project-mount-pleasant.html)
