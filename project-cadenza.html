@@ -175,7 +175,7 @@
       scroll.className = 'mobile-scroll';
       mobileSlides.forEach(function(s) {
         var img = document.createElement('img');
-        img.src = s[0]; img.alt = '';
+        img.src = s[0]; img.alt = ''; img.loading = 'lazy';
         scroll.appendChild(img);
       });
       document.querySelector('.page').appendChild(scroll);
