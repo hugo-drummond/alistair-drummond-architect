@@ -275,3 +275,25 @@ body.gallery-focus {
 .header:has(.burger.open) .header-brand {
   display: none;
 }
+
+/* ── MOBILE SCROLL GALLERY ── */
+.mobile-scroll { display: none; }
+
+@media (max-width: 768px) {
+  .images-section { display: none; }
+  .mobile-scroll {
+    display: block;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 24px;
+  }
+  .mobile-scroll img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .mobile-scroll img:last-child { margin-bottom: 0; }
+}
