@@ -2,9 +2,17 @@
 const slides = document.querySelectorAll('.slide');
 let current = 0;
 
+function loadSlideBg(slide) {
+  if (slide.dataset.bg) {
+    slide.style.backgroundImage = "url('" + slide.dataset.bg + "')";
+    delete slide.dataset.bg;
+  }
+}
+
 function next() {
   slides[current].classList.remove('active');
   current = (current + 1) % slides.length;
+  loadSlideBg(slides[current]);
   slides[current].classList.add('active');
 }
 
