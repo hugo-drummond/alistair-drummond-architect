@@ -126,13 +126,27 @@
     const section = document.querySelector('.images-section');
     const closeBtn = document.getElementById('galleryClose');
 
+    let preFocusRect = null;
     function enterFocus() {
+      preFocusRect = section.getBoundingClientRect();
+      const vw = window.innerWidth, vh = window.innerHeight;
       section.classList.add('focused');
       document.body.classList.add('gallery-focus');
+      section.style.transition = 'none';
+      section.style.clipPath = `inset(${preFocusRect.top}px ${vw - preFocusRect.right}px ${vh - preFocusRect.bottom}px ${preFocusRect.left}px)`;
+      section.offsetHeight;
+      section.style.transition = 'clip-path 0.4s cubic-bezier(0.4,0,0.2,1)';
+      section.style.clipPath = 'inset(0px 0px 0px 0px)';
     }
     function exitFocus() {
-      section.classList.remove('focused');
-      document.body.classList.remove('gallery-focus');
+      if (!preFocusRect) { section.classList.remove('focused'); document.body.classList.remove('gallery-focus'); return; }
+      const vw = window.innerWidth, vh = window.innerHeight, r = preFocusRect;
+      section.style.transition = 'clip-path 0.4s cubic-bezier(0.4,0,0.2,1)';
+      section.style.clipPath = `inset(${r.top}px ${vw - r.right}px ${vh - r.bottom}px ${r.left}px)`;
+      setTimeout(() => {
+        section.classList.remove('focused'); document.body.classList.remove('gallery-focus');
+        section.style.clipPath = ''; section.style.transition = ''; preFocusRect = null;
+      }, 400);
     }
 
     document.querySelector('.gallery-prev').addEventListener('click', () => { showSlide(current - 1); enterFocus(); });
