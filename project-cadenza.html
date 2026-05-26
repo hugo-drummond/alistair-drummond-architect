@@ -106,7 +106,7 @@
     const burger = document.getElementById('burger');
     const navItems = document.getElementById('navItems');
     burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
-    const slides = [
+    const desktopSlides = [
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood10.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord5.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord2.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord3.jpg'],
@@ -119,6 +119,14 @@
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood6.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood8.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood11.jpg', 'images/cadenza/Newlands.jpg']
     ];
+    const mobileSlides = [
+      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord3.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord7.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord5.jpg'],
+      ['images/cadenza/mob-cad-backhouse.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord11.jpg'],
+    ];
+    const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');
     const imgC = document.getElementById('img-c');

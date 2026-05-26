@@ -78,7 +78,7 @@
     const burger = document.getElementById('burger');
     const navItems = document.getElementById('navItems');
     burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
-    const slides = [
+    const desktopSlides = [
       ['images/van-reenen/Alistair-Drummond-Architect_vanReenen1.jpg', 'images/van-reenen/Alistair-Drummond-Architect_vanReenen6.jpg'],
       ['images/van-reenen/Alistair-Drummond-Architect_vanReenen15.jpg', 'images/van-reenen/Alistair-Drummond-Architect_vanReenen13.jpg'],
       ['images/van-reenen/Alistair-Drummond-Architect_vanReenen12.jpg', 'images/van-reenen/Alistair-Drummond-Architect_vanReenen2.jpg'],
@@ -86,6 +86,15 @@
       ['images/van-reenen/Alistair-Drummond-Architect_vanReenen14.jpg', 'images/van-reenen/image14.jpeg'],
       ['images/van-reenen/Alistair-Drummond-Architect_vanReenen4.jpg', 'images/van-reenen/Alistair-Drummond-Architect_vanReenen3.jpg'],
     ];
+    const mobileSlides = [
+      ['images/van-reenen/mob-vr-slide1.jpg'],
+      ['images/van-reenen/mob-vr-slide4.jpg'],
+      ['images/van-reenen/mob-vr-tvroom.jpg'],
+      ['images/van-reenen/mob-vr-bedroom.jpg'],
+      ['images/van-reenen/mob-vr-garage.jpg'],
+      ['images/van-reenen/mob-vr-kitchen.jpg'],
+    ];
+    const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');
     const galleryPair = document.querySelector('.gallery-pair');

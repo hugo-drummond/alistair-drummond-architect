@@ -83,13 +83,22 @@
       navItems.classList.toggle('open');
     });
 
-    const slides = [
+    const desktopSlides = [
       ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman2.jpg', 'images/mount-pleasant/Alistair-Drummond-Architect_Bartman1.jpg'],
       ['images/mount-pleasant/Alistair-Drummond-Architect_MountPleasant3.jpg', 'images/mount-pleasant/Alistair-Drummond-Architect_Bartman5.jpg'],
       ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman3.jpg', 'images/mount-pleasant/Alistair-Drummond-Architect_Bartman4.jpg'],
       ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman9.jpg', 'images/mount-pleasant/Alistair-Drummond-Architect_Bartman10.jpg'],
       ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman6.jpg', 'images/mount-pleasant/Alistair-Drummond-Architect_Bartman8.jpg'],
     ];
+    const mobileSlides = [
+      ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman2.jpg'],
+      ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman1.jpg'],
+      ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman9.jpg'],
+      ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman10.jpg'],
+      ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman5.jpg'],
+      ['images/mount-pleasant/Alistair-Drummond-Architect_Bartman6.jpg'],
+    ];
+    const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
 
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');

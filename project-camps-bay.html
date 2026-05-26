@@ -75,12 +75,19 @@
       navItems.classList.toggle('open');
     });
 
-    const slides = [
+    const desktopSlides = [
       ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies1.jpg', 'images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies3.jpg'],
       ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies2.jpg'],
       ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDaviesCampsBay1.jpg', 'images/camps-bay/Alistair-Drummond-Architect_HumphreysDaviesCampsBay2.jpg'],
       ['images/camps-bay/AlistairDrummondArchitect_TheDriveCampsBay19.jpg', 'images/camps-bay/DSC_0737-scaled.jpg'],
     ];
+    const mobileSlides = [
+      ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies1.jpg'],
+      ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies3.jpg'],
+      ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies2.jpg'],
+      ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDaviesCampsBay1.jpg'],
+    ];
+    const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
 
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');
