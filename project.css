@@ -240,15 +240,20 @@ body.gallery-focus {
 
 .images-section.focused .gallery-pair {
   width: 100%;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-/* Paired slides: consistent landscape height for both images */
-.images-section.focused .gallery-img {
-  width: 100%;
-  height: min(50vh, calc(50vw - 50px));
+/* Paired slides: fixed height, natural width per image */
+.images-section.focused:not(.solo) .gallery-img {
+  width: auto !important;
+  height: min(75vh, 700px);
   aspect-ratio: auto !important;
   object-fit: cover;
   display: block;
+  flex-shrink: 0;
 }
 
 /* Solo slides: natural height, capped to avoid overflow */
@@ -257,9 +262,8 @@ body.gallery-focus {
   max-height: calc(100vh - 120px) !important;
 }
 
-/* Portrait paired slides: taller container, full image visible */
+/* Portrait paired slides: contain so full image visible */
 .images-section.focused.portrait-pair .gallery-img {
-  height: min(75vh, 680px) !important;
   object-fit: contain !important;
   background: #f0f0f0;
 }
