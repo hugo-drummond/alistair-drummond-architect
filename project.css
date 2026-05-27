@@ -257,6 +257,13 @@ body.gallery-focus {
   max-height: calc(100vh - 120px) !important;
 }
 
+/* Portrait paired slides: taller container, full image visible */
+.images-section.focused.portrait-pair .gallery-img {
+  height: min(75vh, 680px) !important;
+  object-fit: contain !important;
+  background: #f0f0f0;
+}
+
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
