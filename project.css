@@ -160,7 +160,7 @@ html, body {
   width: 100%;
   height: min(50vh, calc(50vw - 50px));
   aspect-ratio: auto;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -246,12 +246,12 @@ body.gallery-focus {
   align-items: flex-start;
 }
 
-/* Paired slides: fixed height, natural width per image */
+/* All paired slides: fixed height, natural width, no cropping */
 .images-section.focused:not(.solo) .gallery-img {
   width: auto !important;
   height: min(75vh, 700px);
   aspect-ratio: auto !important;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   flex-shrink: 0;
 }
@@ -260,12 +260,7 @@ body.gallery-focus {
 .images-section.focused.solo .gallery-img {
   height: auto !important;
   max-height: calc(100vh - 120px) !important;
-}
-
-/* Portrait paired slides: contain so full image visible */
-.images-section.focused.portrait-pair .gallery-img {
-  object-fit: contain !important;
-  background: #f0f0f0;
+  object-fit: contain;
 }
 
 
