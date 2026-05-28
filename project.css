@@ -246,12 +246,11 @@ body.gallery-focus {
   align-items: flex-start;
 }
 
-/* All paired slides: natural dimensions, constrained to viewport */
+/* All paired slides: same height, width scales proportionally */
 .images-section.focused:not(.solo) .gallery-img {
   width: auto !important;
   max-width: calc(50vw - 24px);
-  height: auto !important;
-  max-height: calc(100vh - 160px);
+  height: min(calc(100vh - 160px), 580px);
   display: block;
   flex-shrink: 0;
 }
