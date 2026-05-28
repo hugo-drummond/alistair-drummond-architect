@@ -240,19 +240,19 @@ body.gallery-focus {
 
 .images-section.focused .gallery-pair {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
-  justify-content: center;
-  align-items: flex-start;
+  height: min(calc(100vh - 160px), 580px);
 }
 
-/* All paired slides: same height, width scales proportionally */
+/* All paired slides: fill grid cell, object-fit keeps full image visible */
 .images-section.focused:not(.solo) .gallery-img {
-  width: auto !important;
-  max-width: calc(50vw - 24px);
-  height: min(calc(100vh - 160px), 580px);
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: contain !important;
   display: block;
-  flex-shrink: 0;
 }
 
 /* Solo slides: natural height, capped to avoid overflow */
