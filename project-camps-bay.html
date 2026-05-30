@@ -76,7 +76,8 @@
     });
 
     const desktopSlides = [
-      ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies1.jpg', 'images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies3.jpg'],
+      ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies1.jpg', 'images/camps-bay/p2.jpg'],
+      ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDavies3.jpg'],
       ['images/camps-bay/slide-2.jpg'],
       ['images/camps-bay/Alistair-Drummond-Architect_HumphreysDaviesCampsBay1.jpg', 'images/camps-bay/Alistair-Drummond-Architect_HumphreysDaviesCampsBay2.jpg'],
       ['images/camps-bay/AlistairDrummondArchitect_TheDriveCampsBay19.jpg', 'images/camps-bay/DSC_0737-scaled.jpg'],
@@ -111,7 +112,7 @@
         section.classList.add('solo');
       }
       counter.textContent = (current + 1) + ' / ' + slides.length;
-      if (section.classList.contains('focused')) applyOrientation();
+      if (section.classList.contains('focused')) { applyOrientation(); equalizeHeights(); }
     }
 
     const section = document.querySelector('.images-section');
@@ -119,6 +120,34 @@
 
     let preFocusRect = null;
     function applyOrientation() { const aLoaded = imgA.complete && imgA.naturalWidth > 0; const aPortrait = aLoaded && imgA.naturalHeight > imgA.naturalWidth; if (!aLoaded) imgA.onload = applyOrientation; section.classList.toggle("portrait-slide", aPortrait); const hasPair = imgB && imgB.style.display !== "none"; const bLoaded = hasPair && imgB.complete && imgB.naturalWidth > 0; const bPortrait = bLoaded && imgB.naturalHeight > imgB.naturalWidth; if (hasPair && !bLoaded) imgB.onload = applyOrientation; section.classList.toggle("portrait-pair", aPortrait && bPortrait); }
+
+    function equalizeHeights() {
+      if (!section.classList.contains('focused')) return;
+      if (section.classList.contains('solo')) return;
+      if (!imgB || imgB.style.display === 'none') return;
+      function compute() {
+        if (!imgA.naturalWidth || !imgB.naturalWidth) return;
+        const availW = galleryPair.offsetWidth - 8;
+        const arA = imgA.naturalWidth / imgA.naturalHeight;
+        const arB = imgB.naturalWidth / imgB.naturalHeight;
+        const maxH = Math.min(window.innerHeight - 160, 580);
+        const h = Math.min(availW / (arA + arB), maxH);
+        [imgA, imgB].forEach(img => {
+          img.style.setProperty('height', h + 'px', 'important');
+          img.style.setProperty('width', 'auto', 'important');
+          img.style.setProperty('max-height', 'none', 'important');
+          img.style.setProperty('flex', '0 0 auto', 'important');
+        });
+      }
+      if (imgA.complete && imgA.naturalWidth && imgB.complete && imgB.naturalWidth) { compute(); }
+      else { imgA.onload = imgB.onload = () => { if (imgA.naturalWidth && imgB.naturalWidth) compute(); }; }
+    }
+    function clearHeights() {
+      [imgA, imgB].forEach(img => {
+        img.style.removeProperty('height'); img.style.removeProperty('width');
+        img.style.removeProperty('max-height'); img.style.removeProperty('flex');
+      });
+    }
     function enterFocusAfterOrient() {
       preFocusRect = section.getBoundingClientRect();
       const doFocus = () => {
@@ -130,11 +159,13 @@
         section.offsetHeight;
         section.style.transition = 'clip-path 0.4s cubic-bezier(0.4,0,0.2,1)';
         section.style.clipPath = 'inset(0px 0px 0px 0px)';
+        setTimeout(equalizeHeights, 420);
       };
       if (imgA.complete && imgA.naturalWidth > 0) { setTimeout(doFocus, 250); }
       else { imgA.onload = () => setTimeout(doFocus, 250); }
     }
     function exitFocus() {
+      clearHeights();
       if (!preFocusRect) { section.classList.remove('focused'); document.body.classList.remove('gallery-focus'); return; }
       const vw = window.innerWidth, vh = window.innerHeight, r = preFocusRect;
       section.style.transition = 'clip-path 0.4s cubic-bezier(0.4,0,0.2,1)';
