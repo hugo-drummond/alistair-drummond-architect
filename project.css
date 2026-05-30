@@ -236,22 +236,36 @@ body.gallery-focus {
 
 .images-section.focused .gallery {
   width: 100%;
+  padding: 0 80px;
 }
+
+.images-section.focused .gallery-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 202;
+}
+
+.images-section.focused .gallery-prev { left: 40px; }
+.images-section.focused .gallery-next { right: 40px; }
 
 .images-section.focused .gallery-pair {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   gap: 8px;
-  height: min(calc(100vh - 160px), 580px);
+  height: auto;
+  width: 100%;
+  overflow: hidden;
 }
 
-/* All paired slides: fill grid cell, object-fit keeps full image visible */
 .images-section.focused:not(.solo) .gallery-img {
-  width: 100% !important;
-  height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: min(calc(100vh - 160px), 580px) !important;
   max-width: none !important;
-  object-fit: contain !important;
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
   display: block;
 }
 
