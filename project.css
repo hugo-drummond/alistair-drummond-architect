@@ -295,6 +295,26 @@ body.gallery-focus {
   object-fit: contain;
 }
 
+/* Quad slides: 2x2 grid */
+.images-section.focused.quad .gallery-pair {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+  height: calc(100vh - 160px);
+  overflow: hidden;
+}
+
+.images-section.focused.quad .gallery-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  flex: unset !important;
+}
+
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {

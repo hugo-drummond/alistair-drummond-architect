@@ -67,6 +67,8 @@
         <div class="gallery-pair">
           <img class="gallery-img" id="img-a" src="" alt="" />
           <img class="gallery-img" id="img-b" src="" alt="" />
+          <img class="gallery-img" id="img-c" src="" alt="" style="display:none" />
+          <img class="gallery-img" id="img-d" src="" alt="" style="display:none" />
         </div>
         <button class="gallery-arrow gallery-next" aria-label="Next">&#8250;</button>
       </div>
@@ -80,16 +82,15 @@
     burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
     const desktopSlides = [
       ['images/bellevue/slide-1-left.jpg', 'images/bellevue/slide-1-right.jpg'],
-      ['images/bellevue/slide-2-left.jpg', 'images/bellevue/slide-4-right.jpg'],
-      ['images/bellevue/slide-3-left.jpg', 'images/bellevue/slide-3-right.jpg'],
+      ['images/bellevue/slide-2-left.jpg', 'images/bellevue/Alistair-Drummond-Architect_Bellevue10-1.jpg'],
+      ['images/bellevue/slide-3-left.jpg', 'images/bellevue/Alistair-Drummond-Architect_Bellevue14.jpg'],
       ['images/bellevue/slide-4-left.jpg', 'images/bellevue/p5.jpg'],
-      ['images/bellevue/Alistair-Drummond-Architect_Bellevue10-1.jpg', 'images/bellevue/Alistair-Drummond-Architect_Bellevue14.jpg'],
       ['images/bellevue/slide-6-left.jpg', 'images/bellevue/slide-6-right.jpg'],
       ['images/bellevue/slide-10-left.jpg', 'images/bellevue/slide-10-right.jpg'],
       ['images/bellevue/Alistair-Drummond-Architect_Bellevue3.jpg', 'images/bellevue/Alistair-Drummond-Architect_Bellevue3-right.jpg'],
       ['images/bellevue/slide-11-left.jpg', 'images/bellevue/slide-11-right.jpg'],
-      ['images/bellevue/slide-new11-left.jpg'],
-      ['images/bellevue/slide-12-left.jpg'],
+      ['images/bellevue/slide-new11-left.jpg', 'images/bellevue/slide-12-left.jpg'],
+      ['images/bellevue/bad-1.jpg', 'images/bellevue/bad-2.jpg', 'images/bellevue/bad-3.jpg', 'images/bellevue/bad-4.jpg'],
     ];
     const mobileSlides = [
       ['images/bellevue/mob-bel-1.jpg'],
@@ -102,6 +103,8 @@
     const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');
+    const imgC = document.getElementById('img-c');
+    const imgD = document.getElementById('img-d');
     const galleryPair = document.querySelector('.gallery-pair');
     const counter = document.getElementById('galleryCounter');
     let current = 0;
@@ -109,12 +112,25 @@
       current = (index + slides.length) % slides.length;
       const slide = slides[current];
       imgA.src = slide[0];
-      if (slide[1]) { imgB.src = slide[1]; imgB.style.display = 'block'; galleryPair.style.gridTemplateColumns = '1fr 1fr';
-        section.classList.remove('solo'); }
-      else { imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr';
-        section.classList.add('solo'); }
+      imgC.src = ''; imgC.style.display = 'none';
+      imgD.src = ''; imgD.style.display = 'none';
+      section.classList.remove('quad');
+      if (slide.length === 4) {
+        imgB.src = slide[1]; imgB.style.display = 'block';
+        imgC.src = slide[2]; imgC.style.display = 'block';
+        imgD.src = slide[3]; imgD.style.display = 'block';
+        galleryPair.style.gridTemplateColumns = '1fr 1fr';
+        section.classList.remove('solo');
+        section.classList.add('quad');
+      } else if (slide[1]) {
+        imgB.src = slide[1]; imgB.style.display = 'block'; galleryPair.style.gridTemplateColumns = '1fr 1fr';
+        section.classList.remove('solo');
+      } else {
+        imgB.src = ''; imgB.style.display = 'none'; galleryPair.style.gridTemplateColumns = '1fr';
+        section.classList.add('solo');
+      }
       counter.textContent = (current + 1) + ' / ' + slides.length;
-      if (section.classList.contains('focused')) { applyOrientation(); equalizeHeights(); }
+      if (section.classList.contains('focused') && !section.classList.contains('quad')) { applyOrientation(); equalizeHeights(); }
     }
     const section = document.querySelector('.images-section');
     const closeBtn = document.getElementById('galleryClose');
@@ -143,7 +159,7 @@
       else { imgA.onload = imgB.onload = () => { if (imgA.naturalWidth && imgB.naturalWidth) compute(); }; }
     }
     function clearHeights() {
-      [imgA, imgB].forEach(img => {
+      [imgA, imgB, imgC, imgD].forEach(img => {
         img.style.removeProperty('height'); img.style.removeProperty('width');
         img.style.removeProperty('max-height'); img.style.removeProperty('flex');
       });
@@ -159,7 +175,7 @@
         section.offsetHeight;
         section.style.transition = 'clip-path 0.4s cubic-bezier(0.4,0,0.2,1)';
         section.style.clipPath = 'inset(0px 0px 0px 0px)';
-        setTimeout(equalizeHeights, 420);
+        setTimeout(() => { if (section.classList.contains('quad')) clearHeights(); else equalizeHeights(); }, 420);
       };
       if (imgA.complete && imgA.naturalWidth > 0) { setTimeout(doFocus, 250); }
       else { imgA.onload = () => setTimeout(doFocus, 250); }
@@ -171,7 +187,7 @@
       section.style.transition = 'clip-path 0.4s cubic-bezier(0.4,0,0.2,1)';
       section.style.clipPath = `inset(${r.top}px ${vw - r.right}px ${vh - r.bottom}px ${r.left}px)`;
       setTimeout(() => {
-        section.classList.remove('focused'); document.body.classList.remove('gallery-focus');
+        section.classList.remove('focused', 'quad'); document.body.classList.remove('gallery-focus');
         section.style.clipPath = ''; section.style.transition = ''; preFocusRect = null;
       }, 400);
     }
