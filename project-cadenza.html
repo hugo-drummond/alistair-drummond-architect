@@ -108,18 +108,15 @@
     burger.addEventListener('click', () => { burger.classList.toggle('open'); navItems.classList.toggle('open'); });
     const desktopSlides = [
       ['images/cadenza/Alistair-Drummond-Architect_DukFernwood10.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord3.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord5.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood4.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord2.jpg'],
-      ['images/cadenza/slide-3.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord7.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord9.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord8.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord10.jpg'],
+      ['images/cadenza/slide-3.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood9.jpg', 'images/cadenza/Newlands.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord7.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord8.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood2.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord9.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord10.jpg'],
       ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord11.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood6.jpg'],
-      ['images/cadenza/4.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood5.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord14.jpg', 'images/cadenza/cadenza-glass-window.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood2.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood4.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood9.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord12.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood8.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood11.jpg', 'images/cadenza/Newlands.jpg'],
-      ['images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord5.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood7.jpg'],
-      ['images/cadenza/3.jpg', 'images/cadenza/p6.jpg'],
+      ['images/cadenza/4.jpg', 'images/cadenza/Alistair-Drummond-Architect_CadenzaFernwoord12.jpg'],
+      ['images/cadenza/cadenza-glass-window.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood8.jpg', 'images/cadenza/Alistair-Drummond-Architect_DukFernwood7.jpg'],
+      ['images/cadenza/Alistair-Drummond-Architect_DukFernwood11.jpg', 'images/cadenza/3.jpg'],
     ];
     const mobileSlides = [
       ['images/cadenza/mob-cad-1.jpg'],
@@ -166,8 +163,7 @@
       if (!section.classList.contains('focused')) return;
       if (section.classList.contains('solo')) return;
       if (!imgB || imgB.style.display === 'none') return;
-      if (section.classList.contains('triple')) return;
-      const imgs = [imgA, imgB];
+      const imgs = section.classList.contains('triple') ? [imgA, imgB, imgC] : [imgA, imgB];
       function compute() {
         if (imgs.some(img => !img.naturalWidth)) return;
         const availW = galleryPair.offsetWidth - 8;
