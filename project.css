@@ -69,7 +69,7 @@ html, body {
 
 .nav-items a {
   font-size: 13px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #111;
   text-decoration: none;
@@ -101,7 +101,7 @@ html, body {
 .project-title {
   font-size: 36px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.12em;
   color: var(--black);
 }
 
@@ -114,6 +114,7 @@ html, body {
 .about-label {
   font-size: 28px;
   font-weight: 500;
+  letter-spacing: 0.12em;
   color: var(--black);
   margin-bottom: 28px;
 }
@@ -139,6 +140,7 @@ html, body {
 .images-label {
   font-size: 28px;
   font-weight: 500;
+  letter-spacing: 0.12em;
   color: var(--black);
   margin-bottom: 28px;
 }
