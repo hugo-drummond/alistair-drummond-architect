@@ -150,15 +150,18 @@ html, body {
 }
 
 .gallery-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  height: min(50vh, calc(50vw - 50px));
   flex: 1;
 }
 
 .gallery-img {
-  width: 100%;
-  height: min(50vh, calc(50vw - 50px));
+  width: auto;
+  height: 100%;
+  max-width: 60%;
   aspect-ratio: auto;
   object-fit: contain;
   display: block;
