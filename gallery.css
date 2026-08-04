@@ -117,3 +117,28 @@ hr {
 .header:has(.burger.open) .header-brand {
   display: none;
 }
+
+/* ── MOBILE: full-bleed stacked images, matching project pages ── */
+@media (max-width: 768px) {
+  .page {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .section-title {
+    padding: 0 16px;
+  }
+  .photo-row {
+    display: block;
+    margin-bottom: 0;
+    padding: 0 3px;
+  }
+  .photo-row img {
+    width: 100%;
+    height: auto;
+    flex-shrink: initial;
+  }
+  .photo-row img + img,
+  .photo-row + .photo-row img {
+    margin-top: 3px;
+  }
+}

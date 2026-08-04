@@ -120,10 +120,14 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 19px;
+  font-size: 28.5px;
+  line-height: 1.45;
   letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  text-align: center;
   text-transform: uppercase;
   color: rgba(255,255,255,0.75);
+  max-width: calc(100vw - 48px);
   pointer-events: none;
 }
 
