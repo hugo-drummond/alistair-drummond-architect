@@ -103,6 +103,8 @@
           <textarea id="message" name="message" rows="6" placeholder="Describe your project, timeline, or any questions…"></textarea>
         </div>
 
+        <div class="g-recaptcha" data-sitekey="6LcsDzMkAAAAAHHs625viqZ6qxYjxQS6emfON3V3"></div>
+
         <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
 
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
@@ -128,6 +130,7 @@
 
   </main>
 
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
     const burger = document.getElementById('burger');
     const navItems = document.getElementById('navItems');
