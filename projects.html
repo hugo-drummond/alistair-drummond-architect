@@ -40,7 +40,6 @@
       </button>
       <div class="nav-items" id="navItems">
         <a href="/">Home</a>
-        <a href="/gallery">Gallery</a>
         <a href="/contact">Contact</a>
       </div>
     </div>
@@ -52,57 +51,57 @@
 
     <a class="grid-item" href="/project-fernwood">
       <img src="images/p11.jpg" alt="Fernwood, Newlands" />
-      <div class="label">Fernwood, Newlands</div>
+      <div class="label"><span class="label-title">Fernwood, Newlands</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-simpson-tyler">
       <img src="images/p3.jpg" alt="Simpson Tyler, Bettys Bay" loading="lazy" />
-      <div class="label">Simpson Tyler, Bettys Bay</div>
+      <div class="label"><span class="label-title">Simpson Tyler, Bettys Bay</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-augustin">
       <img src="images/p4.jpg" alt="Augustin, Tamboerskloof" loading="lazy" />
-      <div class="label">Augustin, Tamboerskloof</div>
+      <div class="label"><span class="label-title">Augustin, Tamboerskloof</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-van-lienden">
       <img src="images/p10.jpg" alt="Van Lienden, Constantia" loading="lazy" />
-      <div class="label">Van Lienden, Constantia</div>
+      <div class="label"><span class="label-title">Van Lienden, Constantia</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-cadenza">
       <img src="images/p6.jpg" alt="Cadenza, Fernwood" loading="lazy" />
-      <div class="label">Cadenza, Fernwood</div>
+      <div class="label"><span class="label-title">Cadenza, Fernwood</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-camps-bay">
       <img src="images/p2.jpg" alt="The Drive, Camps Bay" loading="lazy" />
-      <div class="label">The Drive, Camps Bay</div>
+      <div class="label"><span class="label-title">The Drive, Camps Bay</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-upper-kloof">
       <img src="images/p12.jpg" alt="Upper Kloof Street" loading="lazy" />
-      <div class="label">Upper Kloof Street</div>
+      <div class="label"><span class="label-title">Upper Kloof Street</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-hills-bettys-bay">
       <img src="images/p9.jpg" alt="Netherby &amp; Hill, Bettys Bay" loading="lazy" />
-      <div class="label">Netherby &amp; Hill, Bettys Bay</div>
+      <div class="label"><span class="label-title">Netherby &amp; Hill, Bettys Bay</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-bellevue">
       <img src="images/p5.jpg" alt="Bellevue Road, Oranjezicht" loading="lazy" />
-      <div class="label">Bellevue Road, Oranjezicht</div>
+      <div class="label"><span class="label-title">Bellevue Road, Oranjezicht</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-van-reenen">
       <img src="images/p8.jpg" alt="Van Reenen Street" loading="lazy" />
-      <div class="label">Van Reenen Street</div>
+      <div class="label"><span class="label-title">Van Reenen Street</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
     <a class="grid-item" href="/project-mount-pleasant">
       <img src="images/p7.jpg" alt="Mount Pleasant" loading="lazy" />
-      <div class="label">Mount Pleasant</div>
+      <div class="label"><span class="label-title">Mount Pleasant</span><span class="label-cta">View project <span class="label-arrow" aria-hidden="true">&#8594;</span></span></div>
     </a>
 
   </main>
@@ -114,6 +113,33 @@
       burger.classList.toggle('open');
       navItems.classList.toggle('open');
     });
+
+    // Touch: the tile nearest the middle of the screen reveals its title.
+    // At the top of the page the first tile stays lit until it is scrolled past.
+    if (window.matchMedia('(hover: none)').matches) {
+      const items = Array.from(document.querySelectorAll('.grid-item'));
+      let ticking = false;
+      function setActive() {
+        ticking = false;
+        let target = items[0];
+        if (window.scrollY > 0) {
+          const mid = window.innerHeight / 2;
+          let best = Infinity;
+          items.forEach(item => {
+            const r = item.getBoundingClientRect();
+            const d = Math.abs(r.top + r.height / 2 - mid);
+            if (d < best) { best = d; target = item; }
+          });
+        }
+        items.forEach(item => item.classList.toggle('is-active', item === target));
+      }
+      function onScroll() {
+        if (!ticking) { ticking = true; requestAnimationFrame(setActive); }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      setActive();
+    }
   </script>
 </body>
 </html>

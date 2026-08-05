@@ -130,8 +130,10 @@ html, body {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 16px;
   text-align: center;
   padding: 20px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -147,6 +149,54 @@ html, body {
 
 .grid-item:hover .label {
   opacity: 1;
+}
+
+/* "View project" cue — touch devices only; hover already signals clickability */
+.label-cta {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+
+.label-arrow {
+  display: inline-block;
+  font-size: 13px;
+  transition: transform 0.45s ease 0.12s;
+}
+
+/* ── TOUCH: scroll-activated tile ── */
+@media (hover: none) {
+  .grid-item.is-active::after { background: rgba(0,0,0,0.5); }
+
+  .grid-item.is-active .label { opacity: 1; }
+
+  .label-cta {
+    display: inline-flex;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+  }
+
+  .grid-item.is-active .label-cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .grid-item.is-active .label-arrow { transform: translateX(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .label-cta,
+  .label-arrow,
+  .label,
+  .grid-item::after { transition-duration: 0.01ms; }
+  .label-cta { transform: none; }
+  .grid-item.is-active .label-arrow { transform: none; }
 }
 
 /* ── RESPONSIVE ── */

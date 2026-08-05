@@ -10,7 +10,6 @@ Alistair Drummond Architect is a Cape Town architecture practice based at 2b Van
 
 - [Home](https://alistairdrummondarchitect.co.za/): Practice overview
 - [Projects](https://alistairdrummondarchitect.co.za/projects): Selected residential projects
-- [Gallery](https://alistairdrummondarchitect.co.za/gallery): Architectural photography
 - [Contact](https://alistairdrummondarchitect.co.za/contact): Office address and enquiry form
 
 ## Selected Projects

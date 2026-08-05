@@ -156,17 +156,24 @@ html, body {
   justify-content: center;
   align-items: flex-start;
   gap: 8px;
-  height: min(50vh, calc(50vw - 50px));
+  height: auto;
   flex: 1;
 }
 
 .gallery-img {
   width: auto;
-  height: 100%;
-  max-width: 60%;
+  height: auto;
+  max-width: calc(50% - 4px);
+  max-height: min(50vh, calc(50vw - 50px));
+  min-width: 0;
+  flex: 0 1 auto;
   aspect-ratio: auto;
   object-fit: contain;
   display: block;
+}
+
+.images-section.solo:not(.focused) .gallery-img {
+  max-width: 60%;
 }
 
 .gallery-arrow {
