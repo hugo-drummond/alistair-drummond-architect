@@ -64,8 +64,10 @@
 
       <form class="form" id="contactForm" action="/api/contact" method="post" novalidate>
 
-        <!-- spam trap: bots fill this, people never see it -->
-        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <!-- Spam trap: bots fill this, people never see it. Styled inline so a
+             stale cached stylesheet can never leave it visible on the page. -->
+        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />
 
         <div class="field">
           <label for="name">Name</label>
@@ -101,8 +103,6 @@
           <textarea id="message" name="message" rows="6" placeholder="Describe your project, timeline, or any questions…"></textarea>
         </div>
 
-        <div class="g-recaptcha" data-sitekey="RECAPTCHA_SITE_KEY"></div>
-
         <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
 
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
@@ -128,7 +128,6 @@
 
   </main>
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
     const burger = document.getElementById('burger');
     const navItems = document.getElementById('navItems');
