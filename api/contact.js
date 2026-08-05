@@ -161,7 +161,10 @@ export default async function handler(req, res) {
       console.error('SES error', sesRes.status, await sesRes.text());
       return res.status(502).json({ error: 'Could not send. Please email us directly.' });
     }
-    return res.status(200).json({ ok: true });
+    // Log the MessageId — without it a message can't be traced once SES accepts it.
+    const { MessageId } = await sesRes.json().catch(() => ({}));
+    console.log('SES accepted', { MessageId, to: TO, from: FROM });
+    return res.status(200).json({ ok: true, id: MessageId });
   } catch (err) {
     console.error('SES request failed', err);
     return res.status(502).json({ error: 'Could not send. Please email us directly.' });
