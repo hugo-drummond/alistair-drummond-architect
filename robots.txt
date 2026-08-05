@@ -13,4 +13,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://alistair-drummond-architect.vercel.app/sitemap.xml
+Sitemap: https://alistairdrummondarchitect.co.za/sitemap.xml

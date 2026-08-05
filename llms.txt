@@ -8,21 +8,21 @@ Alistair Drummond Architect is a Cape Town architecture practice based at 2b Van
 
 ## Pages
 
-- [Home](https://alistair-drummond-architect.vercel.app/): Practice overview
-- [Projects](https://alistair-drummond-architect.vercel.app/projects.html): Selected residential projects
-- [Gallery](https://alistair-drummond-architect.vercel.app/gallery.html): Architectural photography
-- [Contact](https://alistair-drummond-architect.vercel.app/contact.html): Office address and enquiry form
+- [Home](https://alistairdrummondarchitect.co.za/): Practice overview
+- [Projects](https://alistairdrummondarchitect.co.za/projects.html): Selected residential projects
+- [Gallery](https://alistairdrummondarchitect.co.za/gallery.html): Architectural photography
+- [Contact](https://alistairdrummondarchitect.co.za/contact.html): Office address and enquiry form
 
 ## Selected Projects
 
-- [Fernwood, Newlands](https://alistair-drummond-architect.vercel.app/project-fernwood.html)
-- [Simpson Tyler, Betty's Bay](https://alistair-drummond-architect.vercel.app/project-simpson-tyler.html)
-- [Augustin, Tamboerskloof](https://alistair-drummond-architect.vercel.app/project-augustin.html)
-- [Van Lienden, Constantia](https://alistair-drummond-architect.vercel.app/project-van-lienden.html)
-- [Cadenza, Fernwood](https://alistair-drummond-architect.vercel.app/project-cadenza.html)
-- [The Drive, Camps Bay](https://alistair-drummond-architect.vercel.app/project-camps-bay.html)
-- [Upper Kloof Street](https://alistair-drummond-architect.vercel.app/project-upper-kloof.html)
-- [Netherby & Hill, Betty's Bay](https://alistair-drummond-architect.vercel.app/project-hills-bettys-bay.html)
-- [Bellevue Road, Oranjezicht](https://alistair-drummond-architect.vercel.app/project-bellevue.html)
-- [Van Reenen Street, Newlands](https://alistair-drummond-architect.vercel.app/project-van-reenen.html)
-- [Mount Pleasant](https://alistair-drummond-architect.vercel.app/project-mount-pleasant.html)
+- [Fernwood, Newlands](https://alistairdrummondarchitect.co.za/project-fernwood.html)
+- [Simpson Tyler, Betty's Bay](https://alistairdrummondarchitect.co.za/project-simpson-tyler.html)
+- [Augustin, Tamboerskloof](https://alistairdrummondarchitect.co.za/project-augustin.html)
+- [Van Lienden, Constantia](https://alistairdrummondarchitect.co.za/project-van-lienden.html)
+- [Cadenza, Fernwood](https://alistairdrummondarchitect.co.za/project-cadenza.html)
+- [The Drive, Camps Bay](https://alistairdrummondarchitect.co.za/project-camps-bay.html)
+- [Upper Kloof Street](https://alistairdrummondarchitect.co.za/project-upper-kloof.html)
+- [Netherby & Hill, Betty's Bay](https://alistairdrummondarchitect.co.za/project-hills-bettys-bay.html)
+- [Bellevue Road, Oranjezicht](https://alistairdrummondarchitect.co.za/project-bellevue.html)
+- [Van Reenen Street, Newlands](https://alistairdrummondarchitect.co.za/project-van-reenen.html)
+- [Mount Pleasant](https://alistairdrummondarchitect.co.za/project-mount-pleasant.html)
