@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tulleken — a residential project by Alistair Drummond Architect in Cape Town." />
+  <link rel="canonical" href="https://alistairdrummondarchitect.co.za/project-tulleken" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Alistair Drummond Architect" />
+  <meta property="og:title" content="Tulleken — Alistair Drummond Architect" />
+  <meta property="og:description" content="Tulleken — a residential project by Alistair Drummond Architect in Cape Town." />
+  <meta property="og:url" content="https://alistairdrummondarchitect.co.za/project-tulleken" />
+  <meta property="og:image" content="https://alistairdrummondarchitect.co.za/images/tulleken/slide-1.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tulleken — Alistair Drummond Architect" />
+  <meta name="twitter:description" content="Tulleken — a residential project by Alistair Drummond Architect in Cape Town." />
+  <meta name="twitter:image" content="https://alistairdrummondarchitect.co.za/images/tulleken/slide-1.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://alistairdrummondarchitect.co.za/"},
+      {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://alistairdrummondarchitect.co.za/projects"},
+      {"@type": "ListItem", "position": 3, "name": "Tulleken", "item": "https://alistairdrummondarchitect.co.za/project-tulleken"}
+    ]
+  }
+  </script>
+  <title>Tulleken — Alistair Drummond Architect</title>
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="nav-row">
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-items" id="navItems">
+        <a href="/">Home</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+    <a href="/" class="header-brand">Alistair Drummond Architect</a>
+  </header>
+
+  <main class="page">
+    <div class="project-title-wrap">
+      <h1 class="project-title">Tulleken</h1>
+    </div>
+
+    <section class="about-section">
+      <div class="about-label">About</div>
+      <div class="about-body">
+      </div>
+    </section>
+
+    <section class="images-section">
+      <div class="images-label">Featured Images</div>
+      <div class="gallery">
+        <button class="gallery-arrow gallery-prev" aria-label="Previous">&#8249;</button>
+        <div class="gallery-pair">
+          <img class="gallery-img" id="img-a" src="" alt="" />
+          <img class="gallery-img" id="img-b" src="" alt="" />
+        </div>
+        <button class="gallery-arrow gallery-next" aria-label="Next">&#8250;</button>
+      </div>
+      <div class="gallery-counter" id="galleryCounter"></div>
+      <button class="gallery-close" id="galleryClose">&#215;</button>
+    </section>
+  </main>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const navItems = document.getElementById('navItems');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navItems.classList.toggle('open');
+    });
+
+    const desktopSlides = [
+      ['images/tulleken/slide-1.jpg', 'images/tulleken/slide-2.jpg'],
+      ['images/tulleken/slide-5.jpg', 'images/tulleken/slide-6.jpg'],
+      ['images/tulleken/slide-7.jpg', 'images/tulleken/slide-8.jpg'],
+      ['images/tulleken/slide-9.jpg'],
+      ['images/tulleken/slide-10.jpg'],
+      ['images/tulleken/slide-11.jpg', 'images/tulleken/slide-12.jpg'],
+      ['images/tulleken/slide-3.jpg', 'images/tulleken/slide-4.jpg'],
+      ['images/tulleken/slide-13.jpg', 'images/tulleken/slide-14.jpg'],
+    ];
+    const mobileSlides = [
+      ['images/tulleken/mob-tul-1.jpg'],
+      ['images/tulleken/mob-tul-2.jpg'],
+      ['images/tulleken/mob-tul-3.jpg'],
+      ['images/tulleken/mob-tul-4.jpg'],
+      ['images/tulleken/mob-tul-5.jpg'],
+      ['images/tulleken/mob-tul-6.jpg'],
+      ['images/tulleken/mob-tul-7.jpg'],
+    ];
+    const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
+
+    const imgA = document.getElementById('img-a');
+    const imgB = document.getElementById('img-b');
+    const galleryPair = document.querySelector('.gallery-pair');
+    const counter = document.getElementById('galleryCounter');
+    let current = 0;
+
+    function applySlideNow(index) {
+      current = (index + slides.length) % slides.length;
+      const slide = slides[current];
+      imgA.src = slide[0];
+      if (slide[1]) {
+        imgB.src = slide[1];
+        imgB.style.display = 'block';
+        galleryPair.style.gridTemplateColumns = '1fr 1fr';
+        section.classList.remove('solo');
+      } else {
+        imgB.src = '';
+        imgB.style.display = 'none';
+        galleryPair.style.gridTemplateColumns = '1fr';
+        section.classList.add('solo');
+      }
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+      applyOrientation(); equalizeHeights();
+    }
+
+    const section = document.querySelector('.images-section');
+    // Decode the next slide off-DOM first, so it is only ever painted once,
+    // at its final size. Without this the swap resizes three or four times.
+    let slideToken = 0;
+    function fetchSlide(slide) {
+      return Promise.all(slide.map(src => new Promise(resolve => {
+        const im = new Image();
+        im.onload = im.onerror = () => resolve(im);
+        im.src = src;
+      })));
+    }
+    function preloadSlide(index) {
+      slides[(index + slides.length) % slides.length].forEach(src => { new Image().src = src; });
+    }
+    function showSlide(index) {
+      const token = ++slideToken;
+      const target = (index + slides.length) % slides.length;
+      return fetchSlide(slides[target]).then(() => {
+        if (token !== slideToken) return;
+        clearHeights();
+        applySlideNow(target);
+        preloadSlide(target + 1);
+        preloadSlide(target - 1);
+      });
+    }
+    function goToSlide(index) {
+      const wasFocused = section.classList.contains('focused');
+      showSlide(index).then(() => { if (!wasFocused) enterFocusAfterOrient(); });
+    }
+    const closeBtn = document.getElementById('galleryClose');
+
+    let preFocusRect = null;
+    function applyOrientation() { const aLoaded = imgA.complete && imgA.naturalWidth > 0; const aPortrait = aLoaded && imgA.naturalHeight > imgA.naturalWidth; if (!aLoaded) imgA.onload = applyOrientation; section.classList.toggle("portrait-slide", aPortrait); const hasPair = imgB && imgB.style.display !== "none"; const bLoaded = hasPair && imgB.complete && imgB.naturalWidth > 0; const bPortrait = bLoaded && imgB.naturalHeight > imgB.naturalWidth; if (hasPair && !bLoaded) imgB.onload = applyOrientation; section.classList.toggle("portrait-pair", aPortrait && bPortrait); }
+
+    function equalizeHeights() {
+      if (section.classList.contains('solo')) return;
+      if (!imgB || imgB.style.display === 'none') return;
+      function compute() {
+        if (!imgA.naturalWidth || !imgB.naturalWidth) return;
+        const availW = galleryPair.offsetWidth - 8;
+        const arA = imgA.naturalWidth / imgA.naturalHeight;
+        const arB = imgB.naturalWidth / imgB.naturalHeight;
+        const maxH = section.classList.contains('focused')
+          ? Math.min(window.innerHeight - 160, 580)
+          : Math.min(window.innerHeight * 0.5, window.innerWidth * 0.5 - 50);
+        const h = Math.min(availW / (arA + arB), maxH);
+        [imgA, imgB].forEach(img => {
+          img.style.setProperty('height', h + 'px', 'important');
+          img.style.setProperty('width', 'auto', 'important');
+          img.style.setProperty('max-height', 'none', 'important');
+          img.style.setProperty('max-width', 'none', 'important');
+          img.style.setProperty('flex', '0 0 auto', 'important');
+        });
+      }
+      if (imgA.complete && imgA.naturalWidth && imgB.complete && imgB.naturalWidth) { compute(); }
+      else { imgA.onload = imgB.onload = () => { if (imgA.naturalWidth && imgB.naturalWidth) compute(); }; }
+    }
+    function clearHeights() {
+      [imgA, imgB].forEach(img => {
+        img.style.removeProperty('height'); img.style.removeProperty('width');
+        img.style.removeProperty('max-height'); img.style.removeProperty('max-width'); img.style.removeProperty('flex');
+      });
+    }
+    function enterFocusAfterOrient() {
+      preFocusRect = section.getBoundingClientRect();
+      const doFocus = () => {
+        applyOrientation();
+        const vw = window.innerWidth, vh = window.innerHeight, r = preFocusRect;
+        section.classList.add("focused"); document.body.classList.add("gallery-focus"); equalizeHeights();
+        section.style.transition = 'none';
+        section.style.clipPath = `inset(${r.top}px ${vw - r.right}px ${vh - r.bottom}px ${r.left}px)`;
+        section.offsetHeight;
+        section.style.transition = 'clip-path 0.4s cubic-bezier(0.4,0,0.2,1)';
+        section.style.clipPath = 'inset(0px 0px 0px 0px)';
+        setTimeout(equalizeHeights, 420);
+      };
+      if (imgA.complete && imgA.naturalWidth > 0) { setTimeout(doFocus, 250); }
+      else { imgA.onload = () => setTimeout(doFocus, 250); }
+    }
+    function exitFocus() {
+      clearHeights();
+      if (!preFocusRect) { section.classList.remove('focused'); document.body.classList.remove('gallery-focus'); return; }
+      const vw = window.innerWidth, vh = window.innerHeight, r = preFocusRect;
+      section.style.transition = 'clip-path 0.4s cubic-bezier(0.4,0,0.2,1)';
+      section.style.clipPath = `inset(${r.top}px ${vw - r.right}px ${vh - r.bottom}px ${r.left}px)`;
+      setTimeout(() => {
+        section.classList.remove('focused'); document.body.classList.remove('gallery-focus');
+        section.style.clipPath = ''; section.style.transition = ''; preFocusRect = null;
+      }, 400);
+    }
+
+    let resizeTick = false;
+    window.addEventListener('resize', () => {
+      if (resizeTick) return;
+      resizeTick = true;
+      requestAnimationFrame(() => { resizeTick = false; clearHeights(); equalizeHeights(); });
+    });
+    document.querySelector('.gallery-prev').addEventListener('click', () => goToSlide(current - 1));
+    document.querySelector('.gallery-next').addEventListener('click', () => goToSlide(current + 1));
+    closeBtn.addEventListener('click', exitFocus);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
+
+    if (window.innerWidth > 768) showSlide(0);
+    if (window.innerWidth <= 768) {
+      var scroll = document.createElement('div');
+      scroll.className = 'mobile-scroll';
+      mobileSlides.forEach(function(s) {
+        var img = document.createElement('img');
+        img.src = s[0]; img.alt = ''; img.loading = 'lazy';
+        scroll.appendChild(img);
+      });
+      document.querySelector('.page').appendChild(scroll);
+    }
+  </script>
+</body>
+</html>
