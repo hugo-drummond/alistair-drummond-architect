@@ -19,12 +19,13 @@
 ├── project-hills-bettys-bay.html
 ├── project-mount-pleasant.html
 ├── project-simpson-tyler.html
+├── project-tulleken.html
 ├── project-upper-kloof.html
 ├── project-van-lienden.html
 ├── project-van-reenen.html
 ├── style.css               Homepage styles
 ├── projects.css            Projects grid styles
-├── project.css             Shared project page styles (all 11 pages)
+├── project.css             Shared project page styles (all 12 pages)
 ├── gallery.css             Gallery page styles
 ├── contact.css             Contact page styles
 ├── script.js               Burger menu + homepage slideshow
@@ -38,6 +39,7 @@
 │   ├── hills-bettys-bay/
 │   ├── mount-pleasant/
 │   ├── simpson-tyler/
+│   ├── tulleken/
 │   ├── upper-kloof/
 │   ├── van-lienden/
 │   └── van-reenen/
@@ -49,9 +51,12 @@
 
 ## Gallery system (project pages)
 Each project page has:
+- `.about-section` (About label + `<p>` paragraphs) above the gallery — leave it out if there is no copy
 - `desktopSlides` array — each entry is 1 or 2 image paths
 - `mobileSlides` array — each entry is always 1 image path
-- JS detects viewport width and selects the correct array
+- View is locked at page load: `innerWidth <= 768` → `view-mobile` class on `<html>` + mobile scroll strip built; otherwise `view-desktop` + slider started
+- CSS keys off those classes, not a width media query, so rotating a phone or resizing never swaps the gallery. Don't reintroduce live switching
+- Only the chosen gallery's images load (phones skip desktop slides)
 - `applyOrientation()` detects portrait images and adds `portrait-slide` / `portrait-pair` classes
 - CSS in `project.css` handles focused gallery layout: flex, `object-fit: contain`, natural dimensions
 
