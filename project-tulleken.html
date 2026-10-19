@@ -232,15 +232,21 @@
     closeBtn.addEventListener('click', exitFocus);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
 
-    showSlide(0);
-    var scroll = document.createElement('div');
-    scroll.className = 'mobile-scroll';
-    mobileSlides.forEach(function(s) {
-      var img = document.createElement('img');
-      img.src = s[0]; img.alt = ''; img.loading = 'lazy';
-      scroll.appendChild(img);
-    });
-    document.querySelector('.page').appendChild(scroll);
+    // Pick the view once and keep it, even if the phone is rotated later.
+    var mobileView = window.innerWidth <= 768;
+    document.documentElement.classList.add(mobileView ? 'view-mobile' : 'view-desktop');
+    if (mobileView) {
+      var scroll = document.createElement('div');
+      scroll.className = 'mobile-scroll';
+      mobileSlides.forEach(function(s) {
+        var img = document.createElement('img');
+        img.src = s[0]; img.alt = ''; img.loading = 'lazy';
+        scroll.appendChild(img);
+      });
+      document.querySelector('.page').appendChild(scroll);
+    } else {
+      showSlide(0);
+    }
   </script>
 </body>
 </html>

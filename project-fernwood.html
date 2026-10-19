@@ -88,7 +88,7 @@
       ['images/fernwood/mob-fw-7.jpg'],
       ['images/fernwood/mob-fw-8.jpg'],
     ];
-    const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
+    const slides = desktopSlides;
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');
     const galleryPair = document.querySelector('.gallery-pair');
@@ -213,8 +213,10 @@
     document.querySelector('.gallery-next').addEventListener('click', () => goToSlide(current + 1));
     closeBtn.addEventListener('click', exitFocus);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
-    if (window.innerWidth > 768) showSlide(0);
-    if (window.innerWidth <= 768) {
+    // Pick the view once and keep it, even if the phone is rotated later.
+    var mobileView = window.innerWidth <= 768;
+    document.documentElement.classList.add(mobileView ? 'view-mobile' : 'view-desktop');
+    if (mobileView) {
       var scroll = document.createElement('div');
       scroll.className = 'mobile-scroll';
       mobileSlides.forEach(function(s) {
@@ -223,6 +225,8 @@
         scroll.appendChild(img);
       });
       document.querySelector('.page').appendChild(scroll);
+    } else {
+      showSlide(0);
     }
   </script>
 </body>

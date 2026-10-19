@@ -348,24 +348,24 @@ body.gallery-focus {
 }
 
 /* ── MOBILE SCROLL GALLERY ── */
+/* View is picked once on load (view-mobile / view-desktop on <html>) and
+   stays put, so rotating a phone or resizing never swaps the photos. */
 .mobile-scroll { display: none; }
 
-@media (max-width: 768px) {
-  .images-section { display: none; }
-  .mobile-scroll {
-    display: block;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 24px;
-    padding: 0 3px;
-  }
-  .mobile-scroll img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 3px;
-  }
-  .mobile-scroll img:last-child { margin-bottom: 0; }
+.view-mobile .images-section { display: none; }
+.view-mobile .mobile-scroll {
+  display: block;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 24px;
+  padding: 0 3px;
 }
+.view-mobile .mobile-scroll img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 3px;
+}
+.view-mobile .mobile-scroll img:last-child { margin-bottom: 0; }

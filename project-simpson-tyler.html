@@ -115,7 +115,7 @@
       ['images/simpson-tyler/mob-st-6.jpg'],
     ];
     // Each slide is an array of 1 or 2 image paths
-    const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
+    const slides = desktopSlides;
 
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');
@@ -247,8 +247,10 @@
       if (e.key === 'Escape') exitFocus();
     });
 
-    if (window.innerWidth > 768) showSlide(0);
-    if (window.innerWidth <= 768) {
+    // Pick the view once and keep it, even if the phone is rotated later.
+    var mobileView = window.innerWidth <= 768;
+    document.documentElement.classList.add(mobileView ? 'view-mobile' : 'view-desktop');
+    if (mobileView) {
       var scroll = document.createElement('div');
       scroll.className = 'mobile-scroll';
       mobileSlides.forEach(function(s) {
@@ -257,6 +259,8 @@
         scroll.appendChild(img);
       });
       document.querySelector('.page').appendChild(scroll);
+    } else {
+      showSlide(0);
     }
   </script>
 </body>
