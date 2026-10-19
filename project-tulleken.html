@@ -51,6 +51,16 @@
       <h1 class="project-title">Tulleken</h1>
     </div>
 
+    <section class="about-section">
+      <div class="about-label">About</div>
+      <div class="about-body">
+        <p>Tucked away off Clarence Drive in Betty’s Bay, this 90m² pod house sits between the mountains and the sea, surrounded by the rugged beauty of the coastline.</p>
+        <p>The design makes the most of its setting, with high-level windows and a raised roof that let natural light move through the living space throughout the day. The result is a home that feels open and connected to the landscape.</p>
+        <p>Stone walls at either end of the house give the structure a solid feel, while the space between them remains light and open. The exterior is finished in a copper coating that will weather naturally over time, helping the house settle into its surroundings.</p>
+        <p>Betty’s Bay’s coastal weather also played a big part in the design. With strong sun, driving rain and salty winds to contend with, the materials and steel structure were chosen to stand up to the elements while keeping the overall design clean and simple.</p>
+      </div>
+    </section>
+
     <section class="images-section">
       <div class="images-label">Featured Images</div>
       <div class="gallery">
@@ -93,7 +103,7 @@
       ['images/tulleken/mob-tul-6.jpg'],
       ['images/tulleken/mob-tul-7.jpg'],
     ];
-    const slides = window.innerWidth <= 768 ? mobileSlides : desktopSlides;
+    const slides = desktopSlides;
 
     const imgA = document.getElementById('img-a');
     const imgB = document.getElementById('img-b');
@@ -222,17 +232,15 @@
     closeBtn.addEventListener('click', exitFocus);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') exitFocus(); });
 
-    if (window.innerWidth > 768) showSlide(0);
-    if (window.innerWidth <= 768) {
-      var scroll = document.createElement('div');
-      scroll.className = 'mobile-scroll';
-      mobileSlides.forEach(function(s) {
-        var img = document.createElement('img');
-        img.src = s[0]; img.alt = ''; img.loading = 'lazy';
-        scroll.appendChild(img);
-      });
-      document.querySelector('.page').appendChild(scroll);
-    }
+    showSlide(0);
+    var scroll = document.createElement('div');
+    scroll.className = 'mobile-scroll';
+    mobileSlides.forEach(function(s) {
+      var img = document.createElement('img');
+      img.src = s[0]; img.alt = ''; img.loading = 'lazy';
+      scroll.appendChild(img);
+    });
+    document.querySelector('.page').appendChild(scroll);
   </script>
 </body>
 </html>
