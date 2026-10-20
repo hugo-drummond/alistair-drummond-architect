@@ -99,7 +99,7 @@ html, body {
 }
 
 .project-title {
-  font-size: 36px;
+  font-size: 28.8px;
   font-weight: 300;
   letter-spacing: 0.36em;
   text-transform: uppercase;
@@ -340,7 +340,7 @@ body.gallery-focus {
 
 @media (max-width: 540px) {
   .page { padding: 0 20px 48px; }
-  .project-title { font-size: 26px; }
+  .project-title { font-size: 20.8px; }
   .images-grid { grid-template-columns: 1fr; }
 }
 
