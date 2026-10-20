@@ -1,6 +1,6 @@
 # Status
 
-Last updated: Oct 2026
+Last updated: 20 Oct 2026
 
 ## Live
 - Website: alistairdrummondarchitect.co.za (alistair-drummond-architect.vercel.app)
@@ -11,6 +11,7 @@ Last updated: Oct 2026
 - Clip-path focus animation on all project galleries
 
 ## Recently completed
+- 20 Oct 2026: staging branch + preview URL set up; project page titles now uppercase, weight 300, 28.8px, letter-spacing 0.36em; "Featured Images" heading removed from all project pages; Tulleken → "Tulleken, Betty's Bay", Fernwood, Newlands → "Starke, Newlands" (URLs unchanged)
 - Tulleken project page added (12th project), About copy added Oct 2026
 - Gallery view locked at page load: phone or desktop gallery picked once, stays put on rotate/resize; phones no longer download hidden slider images
 - Gallery layout: flex + object-fit: contain — all images shown at natural dimensions, no cropping
@@ -28,5 +29,6 @@ Last updated: Oct 2026
 
 ## Notes
 - Auto-commit hook fires after every Claude response — all changes are auto-committed locally
+- Staging link for Alistair: see Stack.md → Deployment
 - Always review locally before pushing: `python3 -m http.server 8080`
 - Desktop source images live in ~/Desktop/[Project Name]/ folders

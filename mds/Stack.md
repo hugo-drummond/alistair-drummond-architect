@@ -15,7 +15,7 @@
 ├── project-bellevue.html
 ├── project-cadenza.html
 ├── project-camps-bay.html
-├── project-fernwood.html
+├── project-fernwood.html   (titled "Starke, Newlands")
 ├── project-hills-bettys-bay.html
 ├── project-mount-pleasant.html
 ├── project-simpson-tyler.html
@@ -51,7 +51,9 @@
 
 ## Gallery system (project pages)
 Each project page has:
+- `.project-title` h1 ("Name, Area", shown uppercase via CSS)
 - `.about-section` (About label + `<p>` paragraphs) above the gallery — leave it out if there is no copy
+- `.images-section` gallery with no heading (the "Featured Images" label was removed Oct 2026)
 - `desktopSlides` array — each entry is 1 or 2 image paths
 - `mobileSlides` array — each entry is always 1 image path
 - View is locked at page load: `innerWidth <= 768` → `view-mobile` class on `<html>` + mobile scroll strip built; otherwise `view-desktop` + slider started
@@ -68,5 +70,9 @@ Each project page has:
 
 ## Deployment
 - Push master → Vercel auto-deploys (~30s)
+- Staging: push `staging` branch → Vercel preview at https://alistair-drummond-architec-git-5e7550-cifade7739-5613s-projects.vercel.app (behind Vercel login). Share with Alistair by appending `?x-vercel-protection-bypass=<secret>&x-vercel-set-bypass-cookie=true`; secret = Vercel → Settings → Deployment Protection → Protection Bypass for Automation ("Staging share link (Alistair)"). Never commit the secret.
+- Vercel skips a branch push with no new commits; push an empty commit to trigger.
+- Ship staging: merge `staging` → `master`, push. After a direct master push, merge master into staging to keep them in step.
+- CSS cache: `*.css` is cached 1 day, so bump the `?v=N` on `project.css` links (all 12 pages) after editing it (currently v=7).
 - Always use: `/usr/bin/git push origin master`
 - Local preview: `python3 -m http.server 8080` from project root
