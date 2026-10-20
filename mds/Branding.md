@@ -14,7 +14,9 @@ Clean, minimal, architectural. Let the photography lead. No decoration, no noise
 ## Typography
 - Font: Helvetica Neue, Helvetica, Arial (system sans-serif stack)
 - Headings: weight 600, ~36px
-- Project titles: weight 500, ~28px
+- Project page titles (`.project-title`): uppercase, weight 300, 28.8px (20.8px mobile), letter-spacing 0.36em — set by Hugo Oct 2026
+- Project title names: "Name, Area" (e.g. Simpson Tyler, Betty's Bay; Tulleken, Betty's Bay; Starke, Newlands)
+- Project grid labels: uppercase, weight 300
 - Body: weight 400, 15px, color #555
 - Nav: 13px, #111
 - Gallery arrows: 48px, weight 700
