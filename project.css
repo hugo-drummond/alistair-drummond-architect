@@ -101,7 +101,7 @@ html, body {
 .project-title {
   font-size: 36px;
   font-weight: 300;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--black);
 }
